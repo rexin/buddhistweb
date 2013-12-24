@@ -54,15 +54,15 @@ function childtheme_setup() {
 	 */
 	add_theme_support( 'custom-header', array(
 		// Header image default
-		'default-image' => get_stylesheet_directory_uri() .'/images/logo.jpg',
+		'default-image' => get_stylesheet_directory_uri() .'/images/logo.png',
 		// Header text display default
 		'header-text' => false,
 		// Header text color default
 		'default-text-color' => '000',
 		// Header image width (in pixels)
-		'width'	=> '343',
+		'width'	=> '940',
 		// Header image height (in pixels)
-		'height' => '74',
+		'height' => '235',
 		// Header image random rotation default
 		'random-default' => false,
 		// Template header style callback
@@ -111,7 +111,7 @@ function childtheme_header_style() {
 			color:#000;
 		}
 		#blog-description {	
-			padding-bottom: 20px;
+			padding-bottom: 22px;
 		}
 		<?php
 		}
@@ -139,14 +139,14 @@ function childtheme_header_style() {
 		#branding {
 			background-position: center bottom;
 			background-repeat: no-repeat;
-			margin-top: 20px;
+			margin-top: 32px;
 		}
 		#blog-title, #blog-title a, #blog-description {
 			display:none;
 		}
 		#branding { 
-			height:<?php echo HEADER_IMAGE_HEIGHT+15; ?>px; 
-			width:1020px;
+			height:<?php echo HEADER_IMAGE_HEIGHT; ?>px; 
+			width:940px;
 			padding:0; 
 		}
 		<?php
@@ -175,7 +175,7 @@ function childtheme_admin_header_style() {
 		background-repeat:no-repeat;
 		border:0 !important;   
 		height:auto !important;
-		padding:0 0 <?php echo HEADER_IMAGE_HEIGHT; /* change the added integer (22) to match your desired top padding */?>px 0;
+		padding:0 0 <?php echo HEADER_IMAGE_HEIGHT + 22; /* change the added integer (22) to match your desired top padding */?>px 0;
 		margin:0 0 28px 0;
 	}
 	
@@ -198,24 +198,3 @@ function childtheme_admin_header_style() {
 	</style>
 	<?php
 }
-// Display an image in the custom header
-// This function displays the currently selected image (specified in the "Header" admin page)
-// The image is placed in the 'header-image' div so it can be easily manipulated in CSS
-function display_my_image() {
-  $header_image = get_header_image();
-    if ( ! empty( $header_image ) ) { ?>
-      <div id="header-image">
-        <a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
-          <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" />
-        </a>
-      </div>
-    <?php }
-}
-// Action position numbers documented at: http://themeshaper.com/thematic/guide/?page_id=10
-// Use position 2 to place image between brandingopen and blogtitle
-add_action('thematic_header', 'display_my_image', 2);
-//藏历+搜索框
-add_action('thematic_header','header_right_top');
-	function header_right_top(){	
-	echo '<div id="circle"></div><div id="tri"></div><div id="header_right_top"><div id="tcal">这里放藏历</div><div id="search">这里是搜索框</div></div>';	
-	}

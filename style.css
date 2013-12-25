@@ -24,7 +24,7 @@ This work, like WordPress, is released under GNU General Public License, version
 @import url('../thematic/library/styles/typography.css');
 
 /* Apply a basic layout */
-@import url('../thematic/library/layouts/2c-l-fixed.css');
+@import url('../thematic/library/layouts/3c-fixed.css');
 
 /* Apply basic image styles */
 @import url('../thematic/library/styles/images.css');
@@ -35,6 +35,8 @@ This work, like WordPress, is released under GNU General Public License, version
 
 /* Prepare theme for plugins */
 @import url('../thematic/library/styles/plugins.css');
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif:700);
 
 /* Overriding Thematic's styles for congruity with WP-Admin > Appearance > Header default header text color settings */
 body{
@@ -68,7 +70,7 @@ body{
 	border-bottom: 1px dotted #7C7C7C;	
 }
 #header-image img{
-	margin:0 0 15px 5px; 
+	margin:0 0 13px 5px; 
 }
 #primary {border:none;border-right:1px dotted #C0C0C0;width:175px;}
 
@@ -76,8 +78,13 @@ body{
 	position:absolute;
 	width:300px;
   	right:0px;
-  	top:10px;
+  	top:2px;
 	text-align: right;
+}
+.space1{
+	font-size:8px;	
+	margin: auto 10px;	
+	vertical-align: 1px;
 }
 #circle {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -123,7 +130,7 @@ body{
 .sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
    outline: 0;
     border-bottom:none;
-	 color: #ffffff;
+	 color: #1c1c1c;
 }
 
 
@@ -146,40 +153,181 @@ body{
 	margin: 0;
 	color: #ffffff;
 	background: transparent;
+	padding: 5px 5px 8px 5px;
 	}
-.sf-menu ul li:hover, .sf-menu ul li.sfHover,.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active,.sf-menu li ul.sub-menu {
-	 background:#656565;
+#menu-item-7164 a:hover {
+	 color:#012348;
 }
-#menu-item-7164 li:hover, #menu-item-7164 li.sfHover,#menu-item-7164 a:focus, #menu-item-7164 a:hover, #menu-item-7164 a:active,#menu-item-7164 ul.sub-menu {
+#menu-item-7166 a:hover {
+	 color:#B64316;
+}
+#menu-item-7167 a:hover {
+	 color:#637D36;
+}
+#menu-item-7169 a:hover {
+	 color:#BA6D1F;
+}
+#menu-item-7170 a:hover {
+	 color:#015055;
+}
+#menu-item-7174 a:hover {
+	 color:#531043;
+}
+#menu-item-7175 a:hover {
+	 color:#7e1223;
+}
+#menu-item-7176 a:hover {
+	 color:#A58701;
+}
+#menu-item-7177 a:hover {
+	 color:#874c70;
+}
+#menu-item-7164 ul.sub-menu {
 	 background:#012348;
 }
-#menu-item-7166 li:hover, #menu-item-7166 li.sfHover,#menu-item-7166 a:focus, #menu-item-7166 a:hover, #menu-item-7166 a:active,#menu-item-7166 ul.sub-menu {
+#menu-item-7166 ul.sub-menu {
 	 background:#B64316;
 }
-#menu-item-7167 li:hover, #menu-item-7167 li.sfHover,#menu-item-7167 a:focus, #menu-item-7167 a:hover, #menu-item-7167 a:active,#menu-item-7167 ul.sub-menu {
+#menu-item-7167 ul.sub-menu {
 	 background:#637D36;
 }
-#menu-item-7169 li:hover, #menu-item-7169 li.sfHover,#menu-item-7169 a:focus, #menu-item-7169 a:hover, #menu-item-7169 a:active,#menu-item-7169 ul.sub-menu {
+#menu-item-7169 ul.sub-menu {
 	 background:#BA6D1F;
 }
-#menu-item-7170 li:hover, #menu-item-7170 li.sfHover,#menu-item-7170 a:focus, #menu-item-7170 a:hover, #menu-item-7170 a:active,#menu-item-7170 ul.sub-menu {
+#menu-item-7170 ul.sub-menu {
 	 background:#015055;
 }
-#menu-item-7174 li:hover, #menu-item-7174 li.sfHover,#menu-item-7174 a:focus, #menu-item-7174 a:hover, #menu-item-7174 a:active,#menu-item-7174 ul.sub-menu {
+#menu-item-7174 ul.sub-menu {
 	 background:#531043;
 }
-#menu-item-7175 li:hover, #menu-item-7175 li.sfHover,#menu-item-7175 a:focus, #menu-item-7175 a:hover, #menu-item-7175 a:active,#menu-item-7175 ul.sub-menu {
-	 background:#7A1422;
+#menu-item-7175 ul.sub-menu {
+	 background:#7e1223;
 }
-#menu-item-7176 li:hover, #menu-item-7176 li.sfHover,#menu-item-7176 a:focus, #menu-item-7176 a:hover, #menu-item-7176 a:active,#menu-item-7176 ul.sub-menu {
+#menu-item-7176 ul.sub-menu {
 	 background:#A58701;
 }
-#menu-item-7177 li:hover, #menu-item-7177 li.sfHover,#menu-item-7177 a:focus, #menu-item-7177 a:hover, #menu-item-7177 a:active,#menu-item-7177 ul.sub-menu {
-	 background:#884C70;
+#menu-item-7177 ul.sub-menu {
+	 background:#874c70;
 }
-#menu-item-7158 a{
-	color:#000000;
+#home-left{
+	width:228px;
+	min-height:600px;
+	float:left;
 }
-#menu-item-7158 a:hover {
-    color: #ffffff;
+#left1{
+	height: 190px;
+	background: #000000;
+	margin-bottom:1px; 
 }
+#left2{
+	height:232px;
+	background: #B54315;
+	margin-bottom:5px; 
+}
+#left3{
+	height: 198px;
+	background: #e5e5e5;
+	margin-bottom:40px;
+}
+#container_home{
+	width:537px;
+	margin: 0 15px;
+	float: left;
+}
+#content_home{
+	width:100%;
+}
+#home-right{
+	width:225px;
+	min-height:600px;
+	float:left;
+}
+#right1{
+	height: 188px;
+	background:#555555;
+	margin-bottom:10px; 
+}
+#right2{
+	height: 433px;
+	background:#7e1222;
+	
+}
+/*slider*/
+.hdp { width:537px;}
+.hdp ul{
+	margin-left: 0px;
+}
+.hdp li{
+	list-style-type: none;
+}
+.right_R { width:537px; height:310px; float:right; margin:22px 36px 0 0; display:inline;}
+.pic { width:537px; height:310px; overflow:hidden;}
+.pic ul { width:2500px; }
+.pic ul li { float:left; }
+.right_R .pic a { display:block; }
+.pic img { width:537px; height:310px; }
+.pic_bg {width:537px;height:4px;position:absolute; left:2px; bottom:-4px; z-index:1;}
+.pic_link {
+	width: 537px;
+	height: 110px;
+	position: absolute;
+	left: 1px;
+	top: 310px;
+	z-index: 2;
+	border-bottom: 1px solid #CCCCCC;
+}
+.pic_link li {
+	width: 133px;
+	height: 105px;	
+	line-height: 18px;
+	padding-top: 5px;
+	padding-right: 1px;
+	float: left;
+	color: #999999;
+	cursor: pointer;	
+}
+.pic_link li.xz {
+	/*background: url(http://is.kuaibo.com/vip/vip/themes/default/images/vip_bg.gif) no-repeat 0px -583px;*/
+	background: #F0F0F0;	
+}
+.pic_link li a:link {color: #999999; text-decoration:none;}
+.pic_link li a:visited {color: #999999;text-decoration:none;}
+.pic_link li a:hover {color: #999999; text-decoration: none;}
+.dashed_line{display:inline-block;width:536px;margin:0 -1px;border-top:1px dotted #333;border-bottom:1px dotted #333;height:1px;}
+.slider_tri { background: transparent; color: transparent; width: 133px; height: 4px; display: block; top: 0; position: absolute; }
+.s_tri{ left: 60px; bottom: 5px; position: relative; font-size: 12px; }
+.xz .s1{
+	background: #B54315;
+	color: #B54315;
+}
+.xz .s2{
+	background: #637D36;
+	color: #637D36;
+}
+.xz .s3{
+	background: #BA6D1F;
+	color: #BA6D1F;
+}
+.xz .s4{
+	background: #015055;
+	color: #015055;
+}
+.s_desp,.xz .s_desp{ margin-top: 6px; padding: 0 11px; width: 111px; border-left: 1px solid #CCCCCC; height: 99px; background: #ffffff; }
+.xz .s_desp{
+	background:#F0F0F0;
+}
+.s_d1,.xz .s_d1{
+	border-left:none;
+}
+.s_desp p{
+	color:#2d2d2d;
+	margin-bottom:7px; 
+}
+.s_desp h1{
+	font: 10px 'Droid Sans', sans-serif;
+} 
+.s_desp h2{ font-size: 14px; color: #2d2d2d; margin-top: 10px; margin-bottom: 7px; }
+.s_desp span{
+	font: 9px 'Droid Sans', sans-serif;
+	color:#999999;
+} 

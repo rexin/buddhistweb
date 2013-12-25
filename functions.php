@@ -145,7 +145,7 @@ function childtheme_header_style() {
 			display:none;
 		}
 		#branding { 
-			height:<?php echo HEADER_IMAGE_HEIGHT+15; ?>px; 
+			height:<?php echo HEADER_IMAGE_HEIGHT+14; ?>px; 
 			width:1020px;
 			padding:0; 
 		}
@@ -153,6 +153,13 @@ function childtheme_header_style() {
 	}
 	?>
 	</style>
+	<script type="text/javascript"
+var $ = jQuery.noConflict(true);
+</script
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+             var j = $.noConflict(true);
+	</script>
 	<?php
 }
 
@@ -196,6 +203,7 @@ function childtheme_admin_header_style() {
     	font-style: italic;
     }
 	</style>
+	
 	<?php
 }
 // Display an image in the custom header
@@ -216,6 +224,10 @@ function display_my_image() {
 add_action('thematic_header', 'display_my_image', 2);
 //藏历+搜索框
 add_action('thematic_header','header_right_top');
-	function header_right_top(){	
-	echo '<div id="circle"></div><div id="tri"></div><div id="header_right_top"><div id="tcal">这里放藏历</div><div id="search">这里是搜索框</div></div>';	
-	}
+	function header_right_top(){ ?>
+	 <div id="circle"></div><div id="tri"></div>
+	 <div id="header_right_top">
+		<?php include "includes/tcalr.php";?>
+		<div id="search" style="margin-top:14px;"><form action="http://www.baidu.com/s" name="f1" onsubmit="return doSearch(this);" target="_blank"><input type="hidden" name="tn" value="baidulocal" /> <input type="hidden" name="si" value="www.buddhistweb.org" /> <input type="hidden" name="ct" value="2097152" /> <input style="border: 1px solid #cbcbcb; background: url('<?php echo get_stylesheet_directory_uri().'/images/s.gif'; ?>') no-repeat right; padding:2px 3px 3px 3px; color: #3a3a3c;" onclick="javascript:if(this.value=='')this.value=''" onfocus="cls(this);" onblur="res(this);" type="text" name="word" value="" size="29" /></form></div>
+	</div>	
+	<?php }

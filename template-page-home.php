@@ -41,7 +41,17 @@
 			  </tr>
 		</table></div>
 		</div>
-		<div id="left3"></div>
+		<div id="left3">
+			<div class="left_s4"><h1>学修引导 ／ GUIDES</h1></div>
+			<ul>
+			<li><a href="">修法1111</a></li>
+			<li><a href="">修法1111</a></li>
+			<li><a href="">修法1111</a></li>
+			<li><a href="">修法1111</a></li>
+			<ul>
+			<span>MORE</span>			
+		</div>
+		<div class='line4'><div class='line5'></div></div>
 		</div>
 		
 	
@@ -86,17 +96,23 @@
 		</div>
 		<div class="main_pos mp_1">
 		<h1>演讲 ／ LECTURES</h1>
-		<div class='dashed_line'><div class='dashed_line'></div></div>
+		<div class='line6'><div class='line6'></div></div>		
 		<img src="images/img_index/1.jpg"><div class="mp_content"><h4>测试是事实</h4>
 		<span>Aug.8,2013</span>
 		<p>测试是事实测试是实测试是实测试是事实</p>
 		</div></div>
 		<div class="main_pos">
 		<h1>课程 ／ COURSES</h1>
-		<div class='dashed_line'><div class='dashed_line'></div></div>
-		<img src="images/img_index/2.jpg"><div class="mp_content"><h4>测试是事实</h4>
-		<span>Aug.8,2013</span>
-		<p>测试是事实测试实测试是实测试是是事实</p>
+		<div class='line6'><div class='line6'></div></div>		
+		<img src="images/img_index/2.jpg"><div class="mp_content">
+		<ul>
+			<li><a href="">课程1</a></li>
+			<li><a href="">课程1</a></li>
+			<li><a href="">课程1</a></li>
+			<li><a href="">课程1</a></li>
+			<li><a href="">课程1</a></li>		
+			
+		</ul>
 		</div></div>
 		<?php
 				// action hook for inserting content above #content

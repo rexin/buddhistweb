@@ -45,6 +45,9 @@ body{
 	min-width:1020px;
 	margin-top:0px;
 }
+ul{
+	margin-left:0; 
+}
 table {
     border:0;
     border-width:0;
@@ -61,8 +64,7 @@ tr {
 	 margin: 0 auto;
 }
 #main{
-	 width:1020px;
-	 border-right:1px dotted #C0C0C0;
+	 width:1020px;	
 	 padding: 0;
 }
 #container {
@@ -228,6 +230,7 @@ tr {
 	width:228px;
 	min-height:600px;
 	float:left;
+	margin-bottom:40px;
 }
 #left1{
 	height: 80px;
@@ -246,9 +249,9 @@ tr {
 	background-repeat: no-repeat;
 }
 #left3{
-	height: 198px;
-	background: #e5e5e5;
-	margin-bottom:40px;
+	padding-top:11px;
+	height: 183px;
+	background: #e5e5e5;	
 }
 #container_home{
 	width:537px;
@@ -346,12 +349,13 @@ tr {
 }
 .s_desp p{
 	color:#2d2d2d;
+	font-size:12px;
 	margin-bottom:7px; 
 }
 .s_desp h1{
 	font: 10px 'Droid Sans', sans-serif;
 } 
-.s_desp h2{
+.s_desp h2 a{
 	font-size: 14px; color: #2d2d2d; margin-top: 10px; margin-bottom: 7px;
 }
 .s_desp h2 a:link{  color: #2d2d2d;  }
@@ -365,6 +369,7 @@ tr {
 	float: left;	
 	border-bottom: 1px dotted #cccccc;
 }
+
 .main_pos h1,.mp_content h4{
 	font-family: 'Droid Serif','Microsoft Yahei',simhei,sans-serif;
 	font-weight:700;
@@ -393,6 +398,9 @@ tr {
 	font-size:8px;
 	color:#999999;
 } 
+.mp_content li{
+	list-style: none;	
+}
 /*HOME LEFT SIDE-BAR*/
 #left1 .left_s1,#left1 .left_s2{
 	font-family: 'Droid Sans',sans-serif;
@@ -423,3 +431,40 @@ tr {
 	color:#ffffff;
 	text-decoration: none;
 }
+.left_s4{
+	width:209px;
+	line-height:23px;	
+	margin-left:1px;
+	padding-left:8px;
+	background: url(images/2px.gif) repeat;
+}
+.left_s4 h1{
+	background: #656565;
+	color:#ffffff;
+	padding-left:10px; 
+}
+#left3 ul{
+	margin-left:9px;
+	margin-top:16px;
+}
+#left3 li{
+   line-height:24px;
+	width:209px;	
+	border-bottom: 1px solid #BABABA;
+	list-style: none inside url(images/a.gif);
+}
+#left3 span{
+	background: #B54315 url(images/a2.gif) no-repeat 4px center;
+	color:#ffffff;
+	line-height: 13px;
+	padding-left:15px;
+	padding-right:3px;
+	font-size:7px;
+	width:45px;
+	position:relative;
+	top:5px;
+	left:160px; 
+}
+.line4{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #A9A9A9;border-bottom:1px dotted #A9A9A9;height:1px;}
+.line5{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #AEAEAE;border-bottom:1px dotted #AEAEAE;height:1px;}
+.line6{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #818181;border-bottom:1px dotted #818181;height:1px;}

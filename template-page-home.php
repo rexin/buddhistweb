@@ -16,22 +16,52 @@
     thematic_abovecontainer();
 ?>
 		<div id="home-left">
-		<div id="left1"></div>
-		<div id="left2"></div>
+		<div id="left1">
+		<span class="left_s1">INTERNATIONAL</span>
+		<span class="left_s2">BUDDHIST</span>
+		<span class="left_s1">ASSOCIATION</span>
+		</div>
+		<div id="left2">
+		<div class="left_s3"><table id="table1">
+			  <tr>
+				<td><a href="">国际佛学会</a></td>
+				<td><a href="">大洋洲分会</a></td>
+			  </tr>
+			  <tr>
+				<td><a href="">加拿大分会</a></td>
+				<td><a href="">港台分会</a></td>
+			  </tr>
+			  <tr>
+				<td><a href="">欧洲分会</a></td>
+				<td><a href="">其他分会</a></td>
+			  </tr>
+			  <tr>
+				<td><a href="">美国分会</a></td>
+				<td><a href=""></a></td>
+			  </tr>
+		</table></div>
+		</div>
 		<div id="left3"></div>
 		</div>
 		
 	
 		<div id="container_home">
+		<?php 
+		$img_s1 = get_field('slider1');
+		$img_s2 = get_field('slider2');
+		$img_s3 = get_field('slider3');
+		$img_s4 = get_field('slider4');
+		?>
+		<div id="slider">
 		<div class="hdp">
-		<div class="right_R" style="position:absolute;z-index:1;">
+		<div class="right_R" style="position:absolute;">
 		<div class="pic_link">
 			<ul>
 			     
-				    <li mid="0"  class="xz"  ><div class="slider_tri s1"><span class="s_tri">▼</span></div><div class="s1 s_desp s_d1"><h1>test</h1><h2>标题测试测试斯蒂芬森防守打法</h2><span>2013.12.25</span></div></li>			     
-				    <li mid="1" ><div class="slider_tri s2"><span class="s_tri">▼</span></div><div class="s2 s_desp"><h1>test</h1><h2>标题测试测试斯蒂芬森防守打法</h2><span>asdfsdf sf sf </span></div></li>			     
-				    <li mid="2" ><div class="slider_tri s3"><span class="s_tri">▼</span></div><div class="s3 s_desp"><h1>test</h1><h2>标题测试测试斯蒂芬森防守打法</h2><span>2013.12.25</span></div></li>
-					<li mid="3 " ><div class="slider_tri s4"><span class="s_tri">▼</span></div><div class="s4 s_desp"><h1>test</h1><h2>标题测试测试斯蒂芬森防守打法</h2><span>2013.12.25</span></div></li>
+				    <li mid="0"  class="xz"  ><div class="slider_tri s1"><span class="s_tri">▼</span></div><div class="s1 s_desp s_d1"><h1><?php echo $img_s1['caption'];?></h1><h2><a href="<?php echo $img_s1['alt'];?>" title="" alt=""><?php echo $img_s1['title'];?></a></h2><span><?php echo $img_s1['description'];?></span></div></li>			     
+				    <li mid="1" ><div class="slider_tri s2"><span class="s_tri">▼</span></div><div class="s2 s_desp"><h1>TEST</h1><h2><a href="#" title="" alt="">标题测试测试斯蒂芬森防守打法</a></h2><span>asdfsdf sf sf </span></div></li>			     
+				    <li mid="2" ><div class="slider_tri s3"><span class="s_tri">▼</span></div><div class="s3 s_desp"><h1>TEST</h1><h2><a href="#" title="" alt="">标题测试测试斯蒂芬森防守打法</a></h2><span>2013.12.25</span></div></li>
+					<li mid="3 " ><div class="slider_tri s4"><span class="s_tri">▼</span></div><div class="s4 s_desp"><h1>TEST</h1><h2><a href="#" title="" alt="">标题测试测试斯蒂芬森防守打法</a></h2><span>2013.12.25</span></div></li>
 			     
 			</ul>
 		</div>
@@ -39,22 +69,36 @@
 		<div class="pic">
 			<ul>
 				 
-				<li mid="0 "><a href="http://sc.chinaz.com/" title="超级雷达 " alt="超级雷达 "><img src="images/1.jpg " title="超级雷达 " alt="超级雷达 " /></a></li>
+				<li mid="0 "><a href="<?php echo $img_s1['alt'];?>" title="" alt=""><img src="<?php echo $img_s1['url'];?>" title="" alt="" /></a></li>
 				 
-				<li mid="1 "><a href="http://sc.chinaz.com/" title="私有云-存储随时随地 " alt="私有云-存储随时随地 "><img src="images/2.jpg " title="私有云-存储随时随地 " alt="私有云-存储随时随地 " /></a></li>
+				<li mid="1 "><a href="#" title="" alt=""><img src="<?php echo $img_s2['url'];?>" title="" alt="" /></a></li>
 				 
-				<li mid="2 "><a href="http://sc.chinaz.com/" title="云播放公测 " alt="云播放公测 "><img src="images/3.jpg " title="云播放公测 " alt="云播放公测 " /></a></li>
-				<li mid="3 "><a href="http://sc.chinaz.com/" title="云播放公测 " alt="云播放公测 "><img src="images/2.jpg " title="云播放公测 " alt="云播放公测 " /></a></li>
+				<li mid="2 "><a href="#" title="" alt=""><img src="<?php echo $img_s3['url'];?>" title="" alt="" /></a></li>
+				<li mid="3 "><a href="#" title="" alt=""><img src="<?php echo $img_s4['url'];?>" title="" alt="" /></a></li>
 			
 				 
 			</ul>
 		</div>
+		</div>		
 		</div>
 		<script type="text/javascript" src="js/slider.js"></script> 
 		
 		</div>
-	
-			<?php
+		<div class="main_pos mp_1">
+		<h1>演讲 ／ LECTURES</h1>
+		<div class='dashed_line'><div class='dashed_line'></div></div>
+		<img src="images/img_index/1.jpg"><div class="mp_content"><h4>测试是事实</h4>
+		<span>Aug.8,2013</span>
+		<p>测试是事实测试是实测试是实测试是事实</p>
+		</div></div>
+		<div class="main_pos">
+		<h1>课程 ／ COURSES</h1>
+		<div class='dashed_line'><div class='dashed_line'></div></div>
+		<img src="images/img_index/2.jpg"><div class="mp_content"><h4>测试是事实</h4>
+		<span>Aug.8,2013</span>
+		<p>测试是事实测试实测试是实测试是是事实</p>
+		</div></div>
+		<?php
 				// action hook for inserting content above #content
 				thematic_abovecontent();		
 	    	
@@ -112,8 +156,11 @@
 			<?php 
 				// action hook for inserting content below #content
 				thematic_belowcontent(); 
-			?> 
+			?> 			
 		</div><!-- #container -->
+		
+	
+			
 		<div id="home-right">
 		<div id="right1"></div>
 		<div id="right2"></div>		

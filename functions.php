@@ -54,15 +54,15 @@ function childtheme_setup() {
 	 */
 	add_theme_support( 'custom-header', array(
 		// Header image default
-		'default-image' => get_stylesheet_directory_uri() .'/images/logo.jpg',
+		'default-image' => get_stylesheet_directory_uri() .'/images/logo.png',
 		// Header text display default
 		'header-text' => false,
 		// Header text color default
 		'default-text-color' => '000',
 		// Header image width (in pixels)
-		'width'	=> '343',
+		'width'	=> '341',
 		// Header image height (in pixels)
-		'height' => '74',
+		'height' => '72',
 		// Header image random rotation default
 		'random-default' => false,
 		// Template header style callback
@@ -153,9 +153,7 @@ function childtheme_header_style() {
 	}
 	?>
 	</style>
-	<script type="text/javascript"
-var $ = jQuery.noConflict(true);
-</script
+
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
              var j = $.noConflict(true);
@@ -228,6 +226,6 @@ add_action('thematic_header','header_right_top');
 	 <div id="circle"></div><div id="tri"></div>
 	 <div id="header_right_top">
 		<?php include "includes/tcalr.php";?>
-		<div id="search" style="margin-top:14px;"><form action="http://www.baidu.com/s" name="f1" onsubmit="return doSearch(this);" target="_blank"><input type="hidden" name="tn" value="baidulocal" /> <input type="hidden" name="si" value="www.buddhistweb.org" /> <input type="hidden" name="ct" value="2097152" /> <input style="border: 1px solid #cbcbcb; background: url('<?php echo get_stylesheet_directory_uri().'/images/s.gif'; ?>') no-repeat right; padding:2px 3px 3px 3px; color: #3a3a3c;" onclick="javascript:if(this.value=='')this.value=''" onfocus="cls(this);" onblur="res(this);" type="text" name="word" value="" size="29" /></form></div>
+		<div id="search" style="margin-top:14px;"><form action="http://www.baidu.com/s" name="f1" onsubmit="return doSearch(this);" target="_blank"><input type="hidden" name="tn" value="baidulocal" /> <input type="hidden" name="si" value="www.buddhistweb.org" /> <input type="hidden" name="ct" value="2097152" /> <input style="border: 1px solid #cbcbcb; background: url('<?php echo get_stylesheet_directory_uri().'/images/s.gif'; ?>') no-repeat right; padding:3px 5px 5px 8px; color: #3a3a3c;font-size:12px" onclick="javascript:if(this.value=='搜 索')this.value=''" onfocus="cls(this);" onblur="res(this);" type="text" name="word" value="搜 索" size="40" /></form></div>
 	</div>	
 	<?php }

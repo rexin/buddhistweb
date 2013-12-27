@@ -42,14 +42,14 @@
 		</table></div>
 		</div>
 		<div id="left3">
-			<div class="left_s4"><h1>学修引导 ／ GUIDES</h1></div>
+			<div class="left_s4"><h1>学修引导<span>╱GUIDES</span></h1></div>
 			<ul>
 			<li><a href="">修法1111</a></li>
 			<li><a href="">修法1111</a></li>
 			<li><a href="">修法1111</a></li>
 			<li><a href="">修法1111</a></li>
-			<ul>
-			<span>MORE</span>			
+			</ul>
+			<div class="more">MORE</div>			
 		</div>
 		<div class='line4'><div class='line5'></div></div>
 		</div>
@@ -95,14 +95,14 @@
 		
 		</div>
 		<div class="main_pos mp_1">
-		<h1>演讲 ／ LECTURES</h1>
+		<h1>演讲<span>╱LECTURES</span></h1>
 		<div class='line6'><div class='line6'></div></div>		
 		<img src="images/img_index/1.jpg"><div class="mp_content"><h4>测试是事实</h4>
 		<span>Aug.8,2013</span>
 		<p>测试是事实测试是实测试是实测试是事实</p>
 		</div></div>
 		<div class="main_pos">
-		<h1>课程 ／ COURSES</h1>
+		<h1>课程<span>╱COURSES</span></h1>
 		<div class='line6'><div class='line6'></div></div>		
 		<img src="images/img_index/2.jpg"><div class="mp_content">
 		<ul>
@@ -178,8 +178,19 @@
 	
 			
 		<div id="home-right">
-		<div id="right1"></div>
-		<div id="right2"></div>		
+		<div id="right1"><h1>今日教言<span>╱DAILY QUOTE</span></h1>
+		<span class="right_s1">“</span><p>适当放松啊的发生的发生的方式的发生的方式的发生的方式的发生的方式的发生的方式啊</p><span class="right_s2">”</span></div>
+		<div id="right2">
+		<h1>最新消息<span>╱NEWS</span></h1>
+			<div class='line7'><div class='line7'></div></div>	
+		<ul>
+		<li><span>14 FEB SFASDSADF</span><p>发生的方式的发生的方式的发生的方式</p></li>
+		<li><span>14 FEB SFASDSADF</span><p>发生的方式的方式的发生的方式</p></li>
+		<li><span>14 FEB SFASDSADF</span><p>发生的方式的发式的发生的方式</p></li>
+		<li><span>14 FEB SFASDSADF</span><p>发生的方式的发生生的方式</p></li>
+		<li><span>14 FEB SFASDSADF</span><p>发生的方式的发生的方式的式</p></li>	
+		</ul>		
+		<div class="more">MORE</div>	
 		</div>
 
 <?php 

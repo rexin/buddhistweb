@@ -31,6 +31,7 @@
 /**
  * Define theme setup
  */
+
 function childtheme_setup() {
 	
 	/*

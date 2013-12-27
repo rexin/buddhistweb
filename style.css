@@ -113,8 +113,8 @@ a:link{
     height: 25px;    
     width: 25px;
 	position:absolute;
-	top:70px;
-	left:510px;
+	top:66px;
+	left:499px;
 	z-index:-1;
 }
 #tri{width:0;height:0;  
@@ -123,8 +123,8 @@ a:link{
     border-style:solid;  
     border-color: #323232 transparent transparent transparent;
 	position:absolute;
-	top:79px;
-	left:517px;
+	top:75px;
+	left:506px;
 	z-index:0;
 	}
 /* =Menu
@@ -277,9 +277,9 @@ a:link{
 	float:right;
 }
 #right2{
-	height: 391px;
-	background:#7e1222;
-	padding: 20px 10px;
+	height: 417px;
+	background: #7e1222 url(images/right2_bg.png) no-repeat 18px 350px;
+	padding: 14px 12px 0px 12px;
 	color:#ffffff;
 }
 #right1 h1,#right2 h1{
@@ -291,18 +291,24 @@ a:link{
 #right2 h1{
 	margin-bottom:4px;
 }
+#right2 ul{
+	margin-top:12px; 
+}
 #right2 li{
 	border-bottom: 1px dotted #ffffff;
 	list-style: none;
-	line-height:18px;
+	line-height:13px;
 	padding-top:5px;	
 	padding-left:3px;
+	
 }
 #right2 li span{
-	font: 9px "Droid Sans";
+	font: 9px "Droid Sans";	
 }
 #right2 li p{
-	margin-bottom:15px; 
+	margin-top:5px;
+	margin-bottom:12px;
+	font-size:12px; 
 }
 /*slider*/
 #slider{
@@ -536,3 +542,5 @@ a:link{
 .line5{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #AEAEAE;border-bottom:1px dotted #AEAEAE;height:1px;}
 .line6{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #818181;border-bottom:1px dotted #818181;height:1px;}
 .line7{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #ffffff;border-bottom:1px dotted #ffffff;height:1px;}
+
+#footer {border-top:0;}

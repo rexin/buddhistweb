@@ -173,62 +173,65 @@ a:link{
 	background: transparent;
 	padding: 5px 5px 8px 5px;
 	}
-
-.menu-item-7164 a:hover {
+.menu-item-7185 a:link,.menu-item-7185 a:visited{
+	color:#000000;	
+	font-weight:700;
+}
+.menu-item-7186 a:hover {
 	 color:#012348;
 }
-.menu-item-7166 a:hover {
+.menu-item-7188 a:hover {
 	 color:#B64316;
 }
-.menu-item-7167 a:hover {
+.menu-item-7189 a:hover {
 	 color:#637D36;
 }
-.menu-item-7169 a:hover {
+.menu-item-7196 a:hover {
 	 color:#BA6D1F;
 }
-.menu-item-7170 a:hover {
+.menu-item-7190 a:hover {
 	 color:#015055;
 }
-.menu-item-7174 a:hover {
+.menu-item-7201 a:hover {
 	 color:#531043;
 }
-.menu-item-7175 a:hover {
+.menu-item-7191 a:hover {
 	 color:#7e1223;
 }
-.menu-item-7176 a:hover {
+.menu-item-7200 a:hover {
 	 color:#A58701;
 }
-.menu-item-7177 a:hover {
+.menu-item-7193 a:hover {
 	 color:#874c70;
 }
 .submenu li a:hover{
 	 color:#ffffff;
 }
-.menu-item-7164 ul.sub-menu {
+.menu-item-7186 ul.sub-menu {
 	 background:#012348;
 }
-.menu-item-7166 ul.sub-menu {
+.menu-item-7188 ul.sub-menu {
 	 background:#B64316;
 }
-.menu-item-7167 ul.sub-menu {
+.menu-item-7189 ul.sub-menu {
 	 background:#637D36;
 }
-.menu-item-7169 ul.sub-menu {
+.menu-item-7196 ul.sub-menu {
 	 background:#BA6D1F;
 }
-.menu-item-7170 ul.sub-menu {
+.menu-item-7190 ul.sub-menu {
 	 background:#015055;
 }
-.menu-item-7174 ul.sub-menu {
+.menu-item-7201 ul.sub-menu {
 	 background:#531043;
 }
-.menu-item-7175 ul.sub-menu {
+.menu-item-7191 ul.sub-menu {
 	 background:#7e1223;
 }
-.menu-item-7176 ul.sub-menu {
+.menu-item-7200 ul.sub-menu {
 	 background:#A58701;
 }
-.menu-item-7177 ul.sub-menu {
+.menu-item-7193 ul.sub-menu {
 	 background:#874c70;
 }
 

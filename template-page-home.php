@@ -44,12 +44,17 @@
 		<div id="left3">
 			<div class="left_s4"><h1>学修引导<span>╱GUIDES</span></h1></div>
 			<ul>
-			<li><a href="">修法1111</a></li>
-			<li><a href="">修法1111</a></li>
-			<li><a href="">修法1111</a></li>
-			<li><a href="">修法1111</a></li>
-			</ul>
-			<div class="more">MORE</div>			
+			
+<?php
+    $recentPosts = new WP_Query();
+    $recentPosts->query('cat=296&showposts=4');
+?>
+<?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+    <li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
+<?php endwhile;  wp_reset_postdata();?>
+		
+	</ul>
+			<div class="more"><a href="category/practice/guide/">MORE</a></div>			
 		</div>
 		<div class='line4'><div class='line5'></div></div>
 		</div>
@@ -94,23 +99,32 @@
 		<script type="text/javascript" src="js/slider.js"></script> 
 		
 		</div>
-		<div class="main_pos mp_1">
-		<h1>演讲<span>╱LECTURES</span></h1>
+		<div id="mp-1" class="main_pos mp_1">
+		<h1>开示<span>╱LECTURES</span></h1>
 		<div class='line6'><div class='line6'></div></div>		
-		<img src="<?php the_field('img_left'); ?>"><div class="mp_content"><h4>测试是事实</h4>
-		<span>Aug.8,2013</span>
-		<p>测试是事实测试是实测试是实测试是事实</p>
-		</div></div>
+		<img src="<?php the_field('img_left'); ?>">
+		<?php
+    $recentPosts = new WP_Query();
+    $recentPosts->query('cat=93&showposts=1');
+?>
+<?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+    	<div class="mp_content"><h4><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
+		<span><?php echo date('M.j,Y',get_the_time('U')); ?></span>
+		<?php the_excerpt(); ?>
+<?php endwhile;  wp_reset_postdata();?>		
+</div></div>
 		<div class="main_pos">
 		<h1>课程<span>╱COURSES</span></h1>
 		<div class='line6'><div class='line6'></div></div>		
-		<img src="<?php the_field('img_right'); ?>"><div class="mp_content">
+		<img src="<?php the_field('img_right'); ?>"><div id="mp-2" class="mp_content">
 		<ul>
-			<li><a href="">课程1</a></li>
-			<li><a href="">课程1</a></li>
-			<li><a href="">课程1</a></li>
-			<li><a href="">课程1</a></li>
-			<li><a href="">课程1</a></li>		
+		<?php
+    $recentPosts = new WP_Query();
+    $recentPosts->query('cat=284&showposts=5');
+?>
+<?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+    	<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>		
+<?php endwhile;  wp_reset_postdata();?>		
 			
 		</ul>
 		</div></div>
@@ -121,17 +135,20 @@
 			
 		<div id="home-right">
 		<div id="right1"><h1>今日教言<span>╱DAILY QUOTE</span></h1>
-		<span class="right_s1">“</span><p>适当放松啊的发生的发生的方式的发生的方式的发生的方式的发生的方式的发生的方式啊</p><span class="right_s2">”</span></div>
+		<span class="right_s1">“</span><?php quotescollection_quote('show_author=0&random=0'); ?><span class="right_s2">”</span></div>
 		<div id="right2">
 		<h1>最新消息<span>╱NEWS</span></h1>
-			<div class='line7'><div class='line7'></div></div>	
-		<ul>
-		<li><span>14 FEB SFASDSADF</span><p>发生的方式的发生的方式的发生的方式</p></li>
-		<li><span>14 FEB SFASDSADF</span><p>发生的方式的方式的发生的方式</p></li>
-		<li><span>14 FEB SFASDSADF</span><p>发生的方式的发式的发生的方式</p></li>
-		<li><span>14 FEB SFASDSADF</span><p>发生的方式的发生生的方式</p></li>
-		<li><span>14 FEB SFASDSADF</span><p>发生的方式的发生的方式的式</p></li>	
-		</ul>		
+			<div class='line7'><div class='line7'></div></div>
+<ul>
+<?php
+    global $post;
+	$myposts = get_posts('category=-6&numberposts=5');
+	foreach($myposts as $post) :
+?>
+
+    <li><span><?php echo date('j M',get_the_time('U')); ?> <?php the_category(' &gt; '); ?></span><p> <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title();?>"><?php echo mb_strimwidth(get_the_title(), 0, 36, "…"); ?></a></p></li>
+<?php endforeach; ?></ul>			
+				
 		<div class="more">MORE</div>	
 		</div>
 

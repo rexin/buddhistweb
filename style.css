@@ -73,24 +73,15 @@ a:link{
 	 width:1020px;	
 	 padding: 0;
 }
-#container {
-    width:1020px;
-    float:right;
-    margin: 0 0 0 -190px;
-	 
-}
-#content {
-    width:790px;
-    overflow:hidden;
-    margin: 0 0 0 200px;	 
-}
+
+
 #branding{		
 	border-bottom: 1px dotted #7C7C7C;	
 }
 #header-image img{
 	margin:0 0 13px 5px; 
 }
-#primary {border:none;border-right:1px dotted #C0C0C0;width:175px;}
+
 
 #header_right_top{
 	position:absolute;
@@ -494,17 +485,21 @@ a:link{
 	height: 182px;
 	background: #e5e5e5;	
 }
-#left1 .left_s1,#left1 .left_s2{
+.left_s1,.left_s2,.left_s1_2{
 	font-family: 'Droid Sans',sans-serif;
 	color:#ffffff;
 	margin-bottom:10px; 
 }
 .left_s1{
-	font-size:21px;
+	font-size:20.94px;
 	line-height: 21px;	
 }
+.left_s1_2{
+	font-size:19.78px;
+	line-height: 21px;
+}
 .left_s2{
-	font-size:36px;
+	font-size:34.91px;
 	line-height:36px;
 	margin-bottom:15px; 
 }
@@ -624,4 +619,57 @@ a:link{
 	width:390px;
 	float:left;
 	margin-top:30px; 
+}
+	#share-link {
+    background:url("images/share-bg.png") no-repeat;
+    width: 420px;
+    height: 31px;
+    margin: 0;
+    padding: 0;
+	
+}
+
+
+#share-link li, #share-link a {
+    height: 31px;
+    display: block;
+}
+
+#share-link li {
+    float: left;
+    list-style: none;
+    display: inline;
+    text-indent: -9999em;
+	margin-right:15px;
+	width: 31px;
+}
+
+#share-link-01 a:hover{ background:url("images/share-bg.png") 0px -32px no-repeat; }
+#share-link-02 a:hover{ background:url("images/share-bg.png") -46px -32px no-repeat; }
+#share-link-03 a:hover{ background:url("images/share-bg.png") -92px -32px no-repeat; }
+#share-link-04 a:hover{ background:url("images/share-bg.png") -138px -32px no-repeat; }
+#share-link-05 a:hover{ background:url("images/share-bg.png") -184px -32px no-repeat; }
+#share-link-06 a:hover{ background:url("images/share-bg.png") -230px -32px no-repeat; }
+#share-link-07 a:hover{ background:url("images/share-bg.png") -276px -32px no-repeat; }
+#share-link-08 a:hover{ background:url("images/share-bg.png") -322px -32px no-repeat; }
+#share-link-09 a:hover{ background:url("images/share-bg.png") -368px -32px no-repeat; }
+
+/*others*/
+#container {
+	width:1020px;
+}
+#primary {border:none;width:190px; margin: 0 0 0 -1020px;}
+#content {
+	margin: 0 210px;
+}
+#sidebar_logo{
+	height: 92px;
+	background: #000000;
+	padding:98px 15px 0px 15px; 
+}
+#sidebar_logo .left_s1{
+	font-size:18.72px;
+}
+#sidebar_logo .left_s2{
+	font-size:31.2px;
 }

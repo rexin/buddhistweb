@@ -234,4 +234,14 @@ add_action('thematic_header','header_right_top');
 	register_nav_menus( array(
 	'footer_menu' => 'footer menu'
 ) );
-
+//sidebar
+add_action('thematic_abovemainasides','sidebar_logo');
+	function sidebar_logo(){?>	
+	
+	<div id="primary" class="aside main-aside">
+	<div id="sidebar_logo">
+	<span class="left_s1">INTERNATIONAL</span>
+	<span class="left_s2">BUDDHIST</span>
+	<span class="left_s1">ASSOCIATION</span>
+	</div></div>
+	<?php }

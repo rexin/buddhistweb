@@ -19,7 +19,7 @@
 		<div id="left1">
 		<span class="left_s1">INTERNATIONAL</span>
 		<span class="left_s2">BUDDHIST</span>
-		<span class="left_s1">ASSOCIATION</span>
+		<span class="left_s1_2">ASSOCIATION</span>
 		</div>
 		<div id="left2">
 		<div class="left_s3"><table id="table1">

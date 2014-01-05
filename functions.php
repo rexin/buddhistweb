@@ -76,7 +76,10 @@ function childtheme_setup() {
 }
 add_action('thematic_child_init', 'childtheme_setup');
 
-
+//close those function
+ function childtheme_override_postheader_postmeta(){}
+ function childtheme_override_page_title(){}
+ function childtheme_override_postfooter(){}
 /**
  * Custom Image Header Front-End Callback
  *
@@ -90,7 +93,8 @@ add_action('thematic_child_init', 'childtheme_setup');
  * @link http://codex.wordpress.org/Function_Reference/get_header_image get_header_image()
  * @link http://codex.wordpress.org/Function_Reference/get_header_textcolor get_header_textcolor()
  */
-function childtheme_header_style() {
+
+ function childtheme_header_style() {
 	?>	
 	<style type="text/css">
 	<?php
@@ -235,13 +239,102 @@ add_action('thematic_header','header_right_top');
 	'footer_menu' => 'footer menu'
 ) );
 //sidebar
-add_action('thematic_abovemainasides','sidebar_logo');
-	function sidebar_logo(){?>	
-	
+add_action('thematic_abovemainasides','sidebar_left');
+	function sidebar_left(){?>	
+	<?php  $cat = (get_query_var('cat')) ? get_query_var('cat') : 1;?>
+	<?php if(is_single()){
+	$category = get_the_category();	
+	$cat=$category[0]->cat_ID;
+	}?>	
 	<div id="primary" class="aside main-aside">
-	<div id="sidebar_logo">
-	<span class="left_s1">INTERNATIONAL</span>
-	<span class="left_s2">BUDDHIST</span>
-	<span class="left_s1">ASSOCIATION</span>
-	</div></div>
+		<div id="sidebar_logo">
+		<span class="left_s1">INTERNATIONAL</span>
+		<span class="left_s2">BUDDHIST</span>
+		<span class="left_s1">ASSOCIATION</span>
+		</div>
+		<div id="sidebar-ps1" class="cat_<?php echo get_category_root_id($cat);?>">
+		<?php 
+		if (get_category_root_id($cat)=='383'){
+		the_field('left-content',7404);		
+		}
+		?>		
+		</div>
+	</div>
 	<?php }
+add_action('thematic_betweenmainasides','sidebar_right');
+function sidebar_right(){
+$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+if(is_single()){
+	$category = get_the_category();	
+	$cat=$category[0]->cat_ID;
+}
+	
+if(!is_single() || get_category_root_id($cat)=='383'){
+$img_a['383']= get_field('right-img1','7404');
+$img_b['383']= get_field('right-img2','7404');
+$img_a['66']= get_field('img-right-2a','7388');
+$img_b['66']= get_field('img-right-2b','7388');
+$img_a['384']= get_field('img-right-3a','7388');
+$img_b['384']= get_field('img-right-3b','7388');
+$img_a['96']= get_field('img-right-4a','7388');
+$img_b['96']= get_field('img-right-4b','7388');
+$img_a['284']= get_field('img-right-5a','7388');
+$img_b['284']= get_field('img-right-5b','7388');
+$img_a['295']= get_field('img-right-6a','7388');
+$img_b['295']= get_field('img-right-6b','7388');
+$img_a['241']= get_field('img-right-7a','7388');
+$img_b['241']= get_field('img-right-7b','7388');
+$img_a['279']= get_field('img-right-8a','7388');
+$img_b['279']= get_field('img-right-8b','7388');
+$img_a['386']= get_field('img-right-9a','7388');
+$img_b['386']= get_field('img-right-9b','7388');
+
+
+?>
+<div id="secondary" class="aside main-aside">
+	<div class="right_ps1">
+		<img class="s_right1" src="<?php echo $img_a[get_category_root_id($cat)];?>"> 
+		<?php 
+		if (get_category_root_id($cat)=='383'){
+		the_field('right-content1',7404);		
+		}
+		?>
+	</div>
+	<div class="right_ps2">
+		<img class="s_right1" src="<?php echo $img_b[get_category_root_id($cat)];?>">
+		<?php 
+		if (get_category_root_id($cat)=='383'){
+		the_field('right-content2',7404);		
+		}
+		?>
+	</div>
+</div>
+
+<?php }}
+	
+//breadcrumb
+add_action('thematic_abovecontent','breadcrumb');
+function breadcrumb(){
+$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+$bread = " breadcrumbs1";
+if(is_single()){
+	$category = get_the_category();	
+	$cat=$category[0]->cat_ID;
+	if(get_category_root_id($cat)!='383'){
+	$bread = " breadcrumbs2";
+	}
+	}
+if ( function_exists('yoast_breadcrumb') ) {
+	yoast_breadcrumb('<p id="breadcrumbs" class="cat_'.get_category_root_id($cat).$bread.'">','</p>');
+						} 
+}
+
+function get_category_root_id($cat)
+{
+$this_category = get_category($cat);   // 取得当前分类
+while($this_category->category_parent) // 若当前分类有上级分类时，循环
+{
+$this_category = get_category($this_category->category_parent); // 将当前分类设为上级分类（往上爬）
+}
+return $this_category->term_id; // 返回根分类的id号
+}

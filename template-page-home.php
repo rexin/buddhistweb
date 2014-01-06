@@ -48,8 +48,7 @@
 <?php
     $recentPosts = new WP_Query();
     $recentPosts->query('cat=296&showposts=4');
-?>
-<?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+	while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
     <li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
 <?php endwhile;  wp_reset_postdata();?>
 		

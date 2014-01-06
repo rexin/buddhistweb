@@ -120,31 +120,55 @@ a:link{
 	}
 /* =Menu
 -------------------------------------------------------------- */
+.menu ul.sub-menu{
+	display:none;
+}
 #access{
-	padding-top:5px; 	
+	margin-top:0px; 	
 	font-size:14px;
 	font-weight:500;
 	height: 28px;
 	border:none;
 	border-top: 1px dotted #7C7C7C;
-	margin-bottom:14px;
 }
 .sf-menu a{
 	border:none;
-	margin: 0;
+	margin: 15px 0;
 	padding: 10px 18px;
 }
+
+.sf-menu li:hover, .sf-menu li.sfHover,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
+   outline: 0;
+    border-bottom:none;
+	 color: #1c1c1c;
+}
+
+
 .sf-menu ul {
 	border-bottom:0;
-	padding:10px 0 20px 10px;
-	}
+	position:absolute;
+	top:-999em;
+	width:8em; /* left offset of submenus need to match (see below) */	
+}
+
+.sf-menu ul a:hover {
+    color: #ffffff;
+}
+
 .sf-menu li ul.sub-menu {
-	display:block;
+	position: absolute;
+	top: 3.6em;	
 	filter:alpha(Opacity=90);-moz-opacity:0.9;opacity: 0.9;
 }
+#menu-item-7424 ul.sub-menu{
+	width:12em;
+}
 .sf-menu li ul.sub-menu li,.sf-menu li ul.sub-menu li a{
+	margin: 0;
 	color: #ffffff;
-	background: transparent;	
+	background: transparent;
+	padding: 5px 5px 8px 12px;		
 	}
 .menu-item-7185 a:link,.menu-item-7185 a:visited{
 	color:#000000;	
@@ -207,7 +231,8 @@ a:link{
 .menu-item-7433 ul.sub-menu,.cat_386 {
 	 background:#874c70;
 }
-/*Menu end*/
+
+
 #container_home{
 	width:537px;
 	margin: 0 15px;
@@ -697,14 +722,12 @@ a:link{
 .s_right1{
 	width:190px;
 	height: 120px;
-	margin-bottom:15px; 
 }
 .right_ps1{
 	background:#555555;
 	height: 445px;
-	margin-bottom:10px; 	
+	margin-bottom:10px; 
 }
-
 .right_ps2{
 	background:#7e1222;
 	height: 359px;
@@ -719,21 +742,4 @@ a:link{
 }
 #breadcrumbs a:hover,#sidebar-ps1 li a:hover{
 	color:#ffcc99;
-}
-.main-aside ul{
-	padding: 0 10px 0 20px
-}
-.right_ps1 h2,.right_ps2 h2{
-	font: 700 14px/23px "Microsoft Yahei";	
-	color:#ffffff;
-	margin-bottom:35px;
-	padding-left:10px; 
-}
-.right_ps1 h2 span,.right_ps2 span{
-	font-family:"Droid Serif";
-}
-.right_ps1 p,.right_ps2 p{
-	margin: 0 18px 25px 10px;
-	color:#ffffff;
-	font-size:12px;
 }

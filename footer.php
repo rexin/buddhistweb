@@ -26,10 +26,12 @@
     	?>	
         	<div class='line4'><div class='line5'></div></div>
 			<div id="foot-nav">
-			<div class="foot_link"><h1>友情链接</h1><?php wp_list_bookmarks('orderby=rating&categorize=0&category=396&title_li='); ?></div>
-			<div class="foot_link"><h1>友情链接</h1><?php wp_list_bookmarks('orderby=rating&categorize=0&category=397&title_li='); ?></div>
+			<div class="foot_link"><h1>中文网站</h1><?php wp_list_bookmarks('orderby=rating&categorize=0&category=396&title_li='); ?></div>
+			<div class="foot_link"><h1>其它语种</h1><?php wp_list_bookmarks('orderby=rating&categorize=0&category=397&title_li='); ?></div>
 			<div class="foot_link"><h1>友情链接</h1><?php wp_list_bookmarks('orderby=rating&categorize=0&category=398&title_li='); ?></div>
-			<?php wp_nav_menu( array( 'theme_location' => 'footer_menu','menu_class'=> 'menu_foot' ) );?>
+			<div class="foot_link link2"><h1>关注我们</h1><?php wp_list_bookmarks('orderby=rating&categorize=0&category=401&title_li='); ?></div>
+			<div class="foot_link link2"><h1>联系我们</h1><?php wp_list_bookmarks('orderby=rating&categorize=0&category=402&title_li='); ?></div>
+			<div class="foot_link link2"><h1>加入我们</h1><?php wp_list_bookmarks('orderby=rating&categorize=0&category=403&title_li='); ?></div>
 			</div>
 			<div id="foot-info"><img src="<?php echo get_stylesheet_directory_uri() .'/images/footer.jpg';?>">
 			<div id="share"><?php $share_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>

@@ -235,17 +235,15 @@ add_action('thematic_header','header_right_top');
 	</div>	
 	<?php }
 	
-	register_nav_menus( array(
-	'footer_menu' => 'footer menu'
-) );
+	
 //sidebar
 add_action('thematic_abovemainasides','sidebar_left');
-	function sidebar_left(){?>	
+function sidebar_left() { ?>	
 	<?php  $cat = (get_query_var('cat')) ? get_query_var('cat') : 1;?>
 	<?php if(is_single()){
 	$category = get_the_category();	
 	$cat=$category[0]->cat_ID;
-	}?>	
+			}?>	
 	<div id="primary" class="aside main-aside">
 		<div id="sidebar_logo">
 		<span class="left_s1">INTERNATIONAL</span>
@@ -254,13 +252,20 @@ add_action('thematic_abovemainasides','sidebar_left');
 		</div>
 		<div id="sidebar-ps1" class="cat_<?php echo get_category_root_id($cat);?>">
 		<?php 
-		if (get_category_root_id($cat)=='383'){
-		the_field('left-content',7404);		
+		if (get_category_root_id($cat)=='383'){?>
+		<ul><?php		
+		$recentPosts = new WP_Query();
+		$recentPosts->query('cat=383&showposts=5');
+		while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+			<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
+		<?php endwhile;  wp_reset_postdata();
 		}
-		?>		
+		?>
+		</ul>
 		</div>
 	</div>
-	<?php }
+	<?php
+	}		
 add_action('thematic_betweenmainasides','sidebar_right');
 function sidebar_right(){
 $cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
@@ -269,7 +274,7 @@ if(is_single()){
 	$cat=$category[0]->cat_ID;
 }
 	
-if(!is_single() || get_category_root_id($cat)=='383'){
+//if(!is_single() || get_category_root_id($cat)=='383'){
 $img_a['383']= get_field('right-img1','7404');
 $img_b['383']= get_field('right-img2','7404');
 $img_a['66']= get_field('img-right-2a','7388');
@@ -310,7 +315,8 @@ $img_b['386']= get_field('img-right-9b','7388');
 	</div>
 </div>
 
-<?php }}
+<?php //}
+}
 	
 //breadcrumb
 add_action('thematic_abovecontent','breadcrumb');
@@ -328,13 +334,15 @@ if ( function_exists('yoast_breadcrumb') ) {
 	yoast_breadcrumb('<p id="breadcrumbs" class="cat_'.get_category_root_id($cat).$bread.'">','</p>');
 						} 
 }
+//get category root id
 
 function get_category_root_id($cat)
 {
-$this_category = get_category($cat);   // 取得当前分类
-while($this_category->category_parent) // 若当前分类有上级分类时，循环
+$this_category = get_category($cat);   
+while($this_category->category_parent) 
 {
-$this_category = get_category($this_category->category_parent); // 将当前分类设为上级分类（往上爬）
+$this_category = get_category($this_category->category_parent); 
 }
-return $this_category->term_id; // 返回根分类的id号
+return $this_category->term_id; 
 }
+

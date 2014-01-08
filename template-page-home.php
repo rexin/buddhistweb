@@ -61,10 +61,10 @@
 	
 		<div id="container_home">
 		<?php 
-		$img_s1 = get_field('slider1');
-		$img_s2 = get_field('slider2');
-		$img_s3 = get_field('slider3');
-		$img_s4 = get_field('slider4');
+		$img_s1 = get_field('slider1',13099);
+		$img_s2 = get_field('slider2',13099);
+		$img_s3 = get_field('slider3',13099);
+		$img_s4 = get_field('slider4',13099);
 		?>
 		<div id="slider">
 		<div class="hdp">
@@ -101,7 +101,7 @@
 		<div id="mp-1" class="main_pos mp_1">
 		<h1>开示<span>╱LECTURES</span></h1>
 		<div class='line6'><div class='line6'></div></div>		
-		<img src="<?php the_field('img_left'); ?>">
+		<img src="<?php the_field('home_img1',13110); ?>">
 		<?php
     $recentPosts = new WP_Query();
     $recentPosts->query('cat=93&showposts=1');
@@ -109,13 +109,13 @@
 <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
     	<div class="mp_content"><h4><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
 		<span><?php echo date('M.j,Y',get_the_time('U')); ?></span>
-		<?php the_excerpt(); ?>
+		<p><?php echo mb_substr(get_the_excerpt(),0,50)."..."; ?></p>
 <?php endwhile;  wp_reset_postdata();?>		
 </div></div>
 		<div class="main_pos">
 		<h1>课程<span>╱COURSES</span></h1>
 		<div class='line6'><div class='line6'></div></div>		
-		<img src="<?php the_field('img_right'); ?>"><div id="mp-2" class="mp_content">
+		<img src="<?php the_field('home_img2',13110); ?>"><div id="mp-2" class="mp_content">
 		<ul>
 		<?php
     $recentPosts = new WP_Query();
@@ -147,8 +147,10 @@
 
     <li><span><?php echo date('j M',get_the_time('U')); ?> <?php the_category(' &gt; '); ?></span><p> <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title();?>"><?php echo mb_strimwidth(get_the_title(), 0, 36, "…"); ?></a></p></li>
 <?php endforeach; ?></ul>			
-				
-		<div class="more">MORE</div>	
+		<?php 
+		$arc_year = get_the_time('Y');
+		$arc_month = get_the_time('m');?>		
+		<div class="more"><a href="<?php echo get_month_link("$arc_year", "$arc_month"); ?>">MORE</a></div>	
 		</div>
 
 <?php 

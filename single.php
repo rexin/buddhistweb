@@ -20,8 +20,9 @@
 			<?php
 				// action hook for placing content above #content
 				thematic_abovecontent();
+				if(!is_singular( 'ims_gallery' )){
 				$category = get_the_category();
-				$cat=$category[0]->cat_ID;				
+				$cat=$category[0]->cat_ID;	}			
 				// filter for manipulating the element that wraps the content 
 				if ($cat != '383'){
 				echo apply_filters( 'thematic_open_id_content', '<div id="content_single">' . "\n\n" );

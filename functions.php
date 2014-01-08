@@ -80,6 +80,8 @@ add_action('thematic_child_init', 'childtheme_setup');
  function childtheme_override_postheader_postmeta(){}
  function childtheme_override_page_title(){}
  function childtheme_override_postfooter(){}
+ function childtheme_override_nav_above(){}
+ //function childtheme_override_nav_below(){}
 /**
  * Custom Image Header Front-End Callback
  *
@@ -239,83 +241,123 @@ add_action('thematic_header','header_right_top');
 //sidebar
 add_action('thematic_abovemainasides','sidebar_left');
 function sidebar_left() { ?>	
-	<?php  $cat = (get_query_var('cat')) ? get_query_var('cat') : 1;?>
-	<?php if(is_single()){
-	$category = get_the_category();	
-	$cat=$category[0]->cat_ID;
-			}?>	
+	<?php   $cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+			if(is_single()&&!is_singular( 'ims_gallery' )){
+			$category = get_the_category();	
+			$cat=$category[0]->cat_ID;			
+			}
+			$root_id = get_category_root_id($cat);
+			if(is_singular( 'ims_gallery' )||is_tax( "ims_album" )){
+			$root_id = 386;
+			}			
+		?>	
 	<div id="primary" class="aside main-aside">
 		<div id="sidebar_logo">
 		<span class="left_s1">INTERNATIONAL</span>
 		<span class="left_s2">BUDDHIST</span>
 		<span class="left_s1">ASSOCIATION</span>
 		</div>
-		<div id="sidebar-ps1" class="cat_<?php echo get_category_root_id($cat);?>">
-		<?php 
-		if (get_category_root_id($cat)=='383'){?>
-		<ul><?php		
-		$recentPosts = new WP_Query();
-		$recentPosts->query('cat=383&showposts=5');
-		while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
-			<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
-		<?php endwhile;  wp_reset_postdata();
-		}
-		?>
-		</ul>
+		<div id="sidebar-ps1" class="cat_<?php echo $root_id;?>">
+			<span style="display:inline-block">
+			<ul>
+			<?php 
+			if ($root_id=='383'){?>
+			<?php		
+			$recentPosts = new WP_Query();
+			$recentPosts->query('cat=383&showposts=5');
+			while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+				<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
+			<?php endwhile;  wp_reset_postdata();
+			}elseif(!is_month()){		
+			wp_list_categories("child_of=$root_id&title_li=&hide_empty=1&depth=1");
+			}elseif(is_month()){
+			echo "<h2>历史更新</h2>";
+			wp_get_archives("type=monthly&format=html&show_post_count=true"); 
+			}
+			
+			?>
+			</ul>
+			</span>
 		</div>
 	</div>
 	<?php
-	}		
-add_action('thematic_betweenmainasides','sidebar_right');
-function sidebar_right(){
-$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
-if(is_single()){
-	$category = get_the_category();	
-	$cat=$category[0]->cat_ID;
-}
 	
-//if(!is_single() || get_category_root_id($cat)=='383'){
-$img_a['383']= get_field('right-img1','7404');
-$img_b['383']= get_field('right-img2','7404');
-$img_a['66']= get_field('img-right-2a','7388');
-$img_b['66']= get_field('img-right-2b','7388');
-$img_a['384']= get_field('img-right-3a','7388');
-$img_b['384']= get_field('img-right-3b','7388');
-$img_a['96']= get_field('img-right-4a','7388');
-$img_b['96']= get_field('img-right-4b','7388');
-$img_a['284']= get_field('img-right-5a','7388');
-$img_b['284']= get_field('img-right-5b','7388');
-$img_a['295']= get_field('img-right-6a','7388');
-$img_b['295']= get_field('img-right-6b','7388');
-$img_a['241']= get_field('img-right-7a','7388');
-$img_b['241']= get_field('img-right-7b','7388');
-$img_a['279']= get_field('img-right-8a','7388');
-$img_b['279']= get_field('img-right-8b','7388');
-$img_a['386']= get_field('img-right-9a','7388');
-$img_b['386']= get_field('img-right-9b','7388');
+if(!is_single() || get_category_root_id($cat)=='383'){
+
+$img_a['1']= get_field('img-right-1a','13110');
+$img_b['1']= get_field('img-right-1b','13110');
+$img_a['383']= get_field('img-right-1a','13110');
+$img_b['383']= get_field('img-right-1b','13110');
+$img_a['66']= get_field('img-right-2a','13110');
+$img_b['66']= get_field('img-right-2b','13110');
+$img_a['384']= get_field('img-right-3a','13110');
+$img_b['384']= get_field('img-right-3b','13110');
+$img_a['96']= get_field('img-right-4a','13110');
+$img_b['96']= get_field('img-right-4b','13110');
+$img_a['411']= get_field('img-right-4a','13110');
+$img_b['411']= get_field('img-right-4b','13110');
+$img_a['284']= get_field('img-right-5a','13110');
+$img_b['284']= get_field('img-right-5b','13110');
+$img_a['295']= get_field('img-right-6a','13110');
+$img_b['295']= get_field('img-right-6b','13110');
+$img_a['241']= get_field('img-right-7a','13110');
+$img_b['241']= get_field('img-right-7b','13110');
+$img_a['279']= get_field('img-right-8a','13110');
+$img_b['279']= get_field('img-right-8b','13110');
+$img_a['386']= get_field('img-right-9a','13110');
+$img_b['386']= get_field('img-right-9b','13110');
 
 
 ?>
 <div id="secondary" class="aside main-aside">
-	<div class="right_ps1">
-		<img class="s_right1" src="<?php echo $img_a[get_category_root_id($cat)];?>"> 
+	<div class="right_ps1">		
+		<img class="s_right1" src="<?php print_r($img_a[$root_id]);?>"> 
 		<?php 
-		if (get_category_root_id($cat)=='383'){
-		the_field('right-content1',7404);		
-		}
+		if ($root_id =='383'){
+		the_field('right_txt_1a','13121');		
+		}else{?>
+		<h2>最新更新╱<span>UPDATE</span></h2>
+		<ul><?php
+		
+		$recentPosts = new WP_Query();
+		$recentPosts->query("cat=$root_id&showposts=5");
+		while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
+			<li><a href="<?php the_permalink() ?>" title="<?php the_title();?>" rel="bookmark"><?php echo mb_strimwidth(get_the_title(), 0, 21, "…"); ?></a></li>
+		<?php endwhile;  wp_reset_postdata();
+		
 		?>
+		</ul>
+		<div class="more"><a href="<?php echo get_category_link($root_id)?>">MORE</a></div>
+		<?php } ?>	
 	</div>
 	<div class="right_ps2">
-		<img class="s_right1" src="<?php echo $img_b[get_category_root_id($cat)];?>">
+		<img class="s_right1" src="<?php print_r($img_b[$root_id]);?>">
 		<?php 
 		if (get_category_root_id($cat)=='383'){
-		the_field('right-content2',7404);		
-		}
+		the_field('right_txt_1b','13121');			
+		}else{?>		
+		<?php 
+		$the_query = new WP_Query(array('cat'=>$cat,'post__in'=>get_option('sticky_posts'),'posts_per_page'=>1,'ignore_sticky_posts' =>1));
+		while($the_query->have_posts ()):$the_query->the_post();
+		?>
+		<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+		<p><?php echo mb_substr(get_the_excerpt(),0,64)."..."; ?></p>
+		<div class="more sticky"><a href="<?php echo the_permalink() ?>">MORE</a></div>
+		<?php endwhile; wp_reset_postdata();?>
+		
+		<?php }
 		?>
 	</div>
 </div>
 
-<?php //}
+<?php 
+}
+}
+add_action('thematic_belowcontent','fix1');
+function fix1(){
+if(is_tax( "ims_album" )){
+echo "</div>";
+}
 }
 	
 //breadcrumb
@@ -323,17 +365,25 @@ add_action('thematic_abovecontent','breadcrumb');
 function breadcrumb(){
 $cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
 $bread = " breadcrumbs1";
-if(is_single()){
+if(is_singular( 'ims_gallery' )){
+	$cat = 386;
+	$bread = " breadcrumbs2";
+}elseif(is_tax( "ims_album" )){
+	$cat = 386;
+	$bread = " breadcrumbs1";
+}elseif(is_single()){
 	$category = get_the_category();	
 	$cat=$category[0]->cat_ID;
 	if(get_category_root_id($cat)!='383'){
 	$bread = " breadcrumbs2";
 	}
-	}
+}
+	
 if ( function_exists('yoast_breadcrumb') ) {
 	yoast_breadcrumb('<p id="breadcrumbs" class="cat_'.get_category_root_id($cat).$bread.'">','</p>');
 						} 
 }
+
 //get category root id
 
 function get_category_root_id($cat)
@@ -345,4 +395,118 @@ $this_category = get_category($this_category->category_parent);
 }
 return $this_category->term_id; 
 }
+
+//excerpt_length 
+function new_excerpt_length($length) {
+    return 130;
+}
+add_filter('excerpt_length', 'new_excerpt_length');
+
+//read more
+function new_excerpt_more($more) {
+	$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+	$root_id = get_category_root_id($cat);	
+    global $post;    
+    return '</p><p><a class="more2 more_'.$root_id.'" href="'.get_permalink($post->ID). '"> >MORE</a>';
+}
+
+add_filter('excerpt_more', 'new_excerpt_more');
+//
+function childtheme_override_nav_below(){
+if (is_single()) { ?>
+
+			<div id="nav-below" class="navigation">
+				
+			</div>
+
+<?php
+		} else { 
+		$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+		$root_id = get_category_root_id($cat);?>
+			<div id="nav-below-<?php echo $root_id;?>" class="navigation">
+                <?php if(function_exists('wp_pagenavi')) { ?>
+                <?php wp_pagenavi(); ?>
+                <?php } else { ?>  
+				
+				<div class="nav-previous"><?php next_posts_link(sprintf('<span class="meta-nav">&laquo;</span> %s', __('Older posts', 'thematic') ) ) ?></div>
+					
+				<div class="nav-next"><?php previous_posts_link(sprintf('%s <span class="meta-nav">&raquo;</span>',__( 'Newer posts', 'thematic') ) ) ?></div>
+
+				<?php } ?>
+			</div>	
+	
+<?php
+		}
+	}
+function childtheme_override_postheader_posttitle(){
+		$posttitle = "\n\n\t\t\t\t\t";
+		$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+		$root_id = get_category_root_id($cat);
+		if ( !$title_content = get_the_title() )  
+			$title_content = '<a href="' . get_permalink() . '">' . _x('(Untitled)', 'Default title for untitled posts', 'thematic') . '</a>';
+	    if($root_id =='411'){		
+			$posttitle .= '<div class="book-txt"><h1 class="entry-title"><a href="'.get_field('online').'" >《'. $title_content . "》</a></h1>\n";
+			if ( apply_filters( 'thematic_post_thumbs', TRUE) ) {
+				$size = apply_filters( 'thematic_post_thumb_size' , array(150,150) );
+				$attr = apply_filters( 'thematic_post_thumb_attr', array('title'	=> sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
+				if ( has_post_thumbnail() ) {
+					$posttitle = sprintf('<div class="book-item"><div class="book-thumb">%s</div>',							
+									get_the_post_thumbnail(get_the_ID(), $size, $attr)) . $posttitle;
+					}				
+			}
+		}elseif (is_single() || is_page()) {
+	        $posttitle .= '<h1 class="entry-title">' . $title_content . "</h1>\n";
+	    } elseif (is_404()) {    
+	        $posttitle .= '<h1 class="entry-title">' . __('Not Found', 'thematic') . "</h1>\n";
+	    } else {
+	        $posttitle .= '<h2 class="entry-title">';
+	        $posttitle .= sprintf('<a href="%s" title="%s" rel="bookmark">%s</a>',
+	        						apply_filters('the_permalink', get_permalink()),
+									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
+	        						$title_content
+	        						);   
+	        $posttitle .= "</h2>\n";
+	    }
+	    
+	    return apply_filters('thematic_postheader_posttitle',$posttitle); 
+}
+	
+function childtheme_override_content(){
+	global $thematic_content_length;
+		$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+		$root_id = get_category_root_id($cat);
+		if($root_id =='411'){
+			$post = get_the_content( thematic_more_text() );
+			$post = apply_filters('the_content', $post);
+			$post = str_replace(']]>', ']]&gt;', $post);			
+			$post = $post.'<div class="book-link"><a href="'.get_field('online').'" >在线阅读</a><a href="'.get_field('download').'">文档下载</a></div></div></div>';
+		} elseif ( strtolower($thematic_content_length) == 'full' ) {
+			$post = get_the_content( thematic_more_text() );
+			$post = apply_filters('the_content', $post);
+			$post = str_replace(']]>', ']]&gt;', $post);
+		} elseif ( strtolower($thematic_content_length) == 'excerpt') {
+			$post = '';
+			$post .= get_the_excerpt();
+			$post = apply_filters('the_excerpt',$post);
+			if ( apply_filters( 'thematic_post_thumbs', TRUE) ) {
+				$post_title = get_the_title();
+				$size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+				$attr = apply_filters( 'thematic_post_thumb_attr', array('title'	=> sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
+				if ( has_post_thumbnail() ) {
+					$post = sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
+									get_permalink() ,
+									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
+									get_the_post_thumbnail(get_the_ID(), $size, $attr)) . $post;
+					}				
+			}
+		} elseif ( strtolower($thematic_content_length) == 'none') {
+			$post= '';		
+		} else {	
+			$post = get_the_content( thematic_more_text() );
+			$post = apply_filters('the_content', $post);
+			$post = str_replace(']]>', ']]&gt;', $post);
+		}
+		echo apply_filters('thematic_post', $post);
+	} 
+		
 

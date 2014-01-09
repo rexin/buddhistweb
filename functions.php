@@ -296,8 +296,8 @@ $img_a['96']= get_field('img-right-4a','13110');
 $img_b['96']= get_field('img-right-4b','13110');
 $img_a['411']= get_field('img-right-4a','13110');
 $img_b['411']= get_field('img-right-4b','13110');
-$img_a['284']= get_field('img-right-5a','13110');
-$img_b['284']= get_field('img-right-5b','13110');
+$img_a['417']= get_field('img-right-5a','13110');
+$img_b['417']= get_field('img-right-5b','13110');
 $img_a['295']= get_field('img-right-6a','13110');
 $img_b['295']= get_field('img-right-6b','13110');
 $img_a['241']= get_field('img-right-7a','13110');
@@ -454,6 +454,22 @@ function childtheme_override_postheader_posttitle(){
 									get_the_post_thumbnail(get_the_ID(), $size, $attr)) . $posttitle;
 					}				
 			}
+		}elseif($root_id =='417'){		
+			$posttitle .= '<h1 class="entry-title">';
+	        $posttitle .= sprintf('<a href="%s" title="%s" rel="bookmark">%s</a>',
+	        						apply_filters('the_permalink', get_permalink()),
+									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
+	        						$title_content
+	        						);   
+	        $posttitle .= "</h1>\n";
+			if ( apply_filters( 'thematic_post_thumbs', TRUE) ) {
+				$size = apply_filters( 'thematic_post_thumb_size' , array(150,150) );
+				$attr = apply_filters( 'thematic_post_thumb_attr', array('title'	=> sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
+				if ( has_post_thumbnail() ) {
+					$posttitle = sprintf('<div class="kc_title"><div class="kc-thumb">%s</div>%s</div>',							
+									get_the_post_thumbnail(get_the_ID(), $size, $attr), $posttitle);
+					}				
+			}
 		}elseif (is_single() || is_page()) {
 	        $posttitle .= '<h1 class="entry-title">' . $title_content . "</h1>\n";
 	    } elseif (is_404()) {    
@@ -474,12 +490,38 @@ function childtheme_override_postheader_posttitle(){
 function childtheme_override_content(){
 	global $thematic_content_length;
 		$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
-		$root_id = get_category_root_id($cat);
+		if(is_single()&&!is_singular( 'ims_gallery' )){
+			$category = get_the_category();	
+			$cat=$category[0]->cat_ID;			
+			}
+		$root_id = get_category_root_id($cat);		
 		if($root_id =='411'){
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
 			$post = str_replace(']]>', ']]&gt;', $post);			
 			$post = $post.'<div class="book-link"><a href="'.get_field('online').'" >在线阅读</a><a href="'.get_field('download').'">文档下载</a></div></div></div>';
+		}elseif($root_id =='417'){
+			$post = get_the_content( thematic_more_text() );
+			$post = apply_filters('the_content', $post);
+			$post = trim(strip_tags($post));
+			$str = explode("\n", $post);			
+			$post = "";
+			if(!is_single()){
+			for ($i= 0;$i< 3; $i++){			
+					$rss =explode("|", $str[$i]);
+					$post = $post.sprintf('<div class="kc_item"><span>%s</span><a href="%s">音频</a>|<a href="%s">视频下载</a>|<a href="%s">字幕</a>|<a href="https://www.youtube.com/embed/%s?autoplay=1&autohide=0">视频播放</a>|<a href="%s">文档</a></div>',$rss[0],$rss[1],$rss[2],$rss[3],$rss[4],$rss[5]); 
+					}
+					$post = $post.sprintf('<div class="more3"><a href="%s" title="%s" rel="bookmark">>MORE</a></div>',
+	        						apply_filters('the_permalink', get_permalink()),
+									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) )
+	        						);   
+			}else{
+			foreach ($str as $key => $result){			
+					$rss =explode("|", $result);
+					$post = $post.sprintf('<div class="kc_item"><span>%s</span><a href="%s">音频</a>|<a href="%s">视频下载</a>|<a href="%s">字幕</a>|<a href="https://www.youtube.com/embed/%s?autoplay=1&autohide=0">视频播放</a>|<a href="%s">文档</a></div>',$rss[0],$rss[1],$rss[2],$rss[3],$rss[4],$rss[5]); 
+					}
+			}
+			
 		} elseif ( strtolower($thematic_content_length) == 'full' ) {
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
@@ -509,4 +551,3 @@ function childtheme_override_content(){
 		echo apply_filters('thematic_post', $post);
 	} 
 		
-

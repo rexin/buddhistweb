@@ -66,7 +66,7 @@ a:link{
 	text-decoration: none;
 }
 #wrapper {
-    width:1020px;
+    width:1020px;	
 	 margin: 0 auto;
 }
 #main{
@@ -121,13 +121,13 @@ a:link{
 /* =Menu
 -------------------------------------------------------------- */
 #access{
-	padding-top:5px; 	
+	padding-top:20px; 	
 	font-size:14px;
 	font-weight:500;
 	height: 28px;
 	border:none;
 	border-top: 1px dotted #7C7C7C;
-	margin-bottom:14px;
+	margin-bottom:19px;
 }
 .sf-menu a{
 	border:none;
@@ -154,7 +154,7 @@ a:link{
 	 color:#012348;
 }
 .menu-item-13046 a:hover,a.more_66 {
-	 color:#B64316;
+	 color:#B28146;
 }
 .menu-item-13063 a:hover,a.more_384 {
 	 color:#637D36;
@@ -162,7 +162,7 @@ a:link{
 .menu-item-13067 a:hover,a.more_96 {
 	 color:#BA6D1F;
 }
-.menu-item-13071 a:hover,a.more_284 {
+.menu-item-13071 a:hover,a.more_417,.more3 a {
 	 color:#015055;
 }
 .menu-item-13078 a:hover,a.more_295 {
@@ -184,7 +184,7 @@ a:link{
 	 background:#012348;
 }
 .menu-item-13046 ul.sub-menu,.cat_66,#nav-below-66 .wp-pagenavi span.current {
-	 background:#B64316;
+	 background:#B28146;
 }
 .menu-item-13063 ul.sub-menu,.cat_384,#nav-below-384 .wp-pagenavi span.current {
 	 background:#637D36;
@@ -192,7 +192,7 @@ a:link{
 .menu-item-13067 ul.sub-menu,.cat_96,#nav-below-96 .wp-pagenavi span.current,.cat_411,#nav-below-411 .wp-pagenavi span.current{
 	 background:#BA6D1F;
 }
-.menu-item-13071 ul.sub-menu,.cat_284,#nav-below-284 .wp-pagenavi span.current {
+.menu-item-13071 ul.sub-menu,.cat_417,#nav-below-284 .wp-pagenavi span.current {
 	 background:#015055;
 }
 .menu-item-13078 ul.sub-menu,.cat_295,#nav-below-295 .wp-pagenavi span.current {
@@ -695,7 +695,8 @@ a:link{
 	background-repeat: no-repeat;
 	padding-top:5px;
 	padding-bottom:50px;
-	text-align:center;	
+	text-align:left;
+	padding-left:40px;	
 }
 .s_right1{
 	width:190px;
@@ -773,7 +774,7 @@ margin: 0 20px 40px 0;
 	font-size:12px;
 	color:#666666;
 }
-a.more2 {
+a.more2,.more3{
 	font-family:Verdana, Arial, sans-serif;
 	float: left;	
 	text-decoration: underline;
@@ -816,4 +817,26 @@ a.more2 {
 	margin-right:14px;
 	color: #BA6D1F;
 	text-decoration:underline;
+}
+.kc_item,.more3{
+	line-height: 30px;
+	width:415px;
+	margin-left:32px;
+	float:left;
+}
+.kc_item a{
+	margin:0 15px;
+	color:#343434;
+}
+.kc-thumb{
+	width:120px;
+	height: 80px;
+	border: 1px solid #9C9698;
+}
+.kc_title{
+	float: left;
+	width:120px;
+}
+.kc_title .entry-title{
+	width:120px;	
 }

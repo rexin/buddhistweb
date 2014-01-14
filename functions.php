@@ -559,9 +559,12 @@ function childtheme_override_content(){
 			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_substr($rs[1],0,16).'</a></span></div>';
 			}
 			}	
-		}elseif($parent_id="388"||$cat="388"){
+		}elseif($cat=="386"){
+			$post = "";		
+		}elseif($parent_id=="388"||$cat=="388"){
 			$post = get_the_content( thematic_more_text() );					
 			$yt = explode("\n", $post);
+			if(strstr($yt[0],'|')){
 			$post ='<ul class="booklist">';
 			$i=1;
 			foreach ($yt as $key => $item){
@@ -577,28 +580,89 @@ function childtheme_override_content(){
 			$i++;
 			}
 			$post = $post."</ul>";
+			}
 			$post = apply_filters('the_content', $post);	
 		}elseif($root_id =='417'){
-			$post = get_the_content( thematic_more_text() );
-			$post = apply_filters('the_content', $post);
-			$post = trim(strip_tags($post));
+			$post = get_the_content( thematic_more_text() );			
+			$post = trim($post);
 			$str = explode("\n", $post);			
 			$post = "";
 			if(!is_single()){
-			for ($i= 0;$i< 3; $i++){			
-					$rss =explode("|", $str[$i]);
-					$post = $post.sprintf('<div class="kc_item"><span>%s</span> 音频 <a href="%s"></a>|<a href="https://www.youtube.com/embed/%s?autoplay=1&autohide=0">视频</a>|<a href="%s">字幕</a>|<a href="%s">文档</a></div>',$rss[0],$rss[1],$rss[4],$rss[3],$rss[5]); 
+			for ($i= 0;$i< 3; $i++){
+				$rss =explode("|", $str[$i]);
+				if($rss[1]!=""){
+				$play= "javascript:showplayer('play".$i."');";
+				$audio = '<a href="'.$play.'">音频</a>|<a href="'.$rss[1].'">下载</a>';				
+				}else{
+				$audio = '<span class="tbd">音频</span>';
+				}
+				if($rss[2]!=""){
+				$video = '<a href="https://www.youtube.com/embed/'.$rss[2].'?autoplay=1">视频</a>';
+				}else{
+				$video = '<span class="tbd">视频</span>';
+				}
+				if($rss[3]!=""){
+				$srt = '<a href="'.$rss[3].'">字幕</a>';
+				}else{
+				$srt = '<span class="tbd">字幕</span>';
+				}
+				if($rss[4]!=""){
+				$doc = '<a href="'.$rss[4].'">文档</a>';
+				}else{
+				$doc = '<span class="tbd">文档</span>';
+				}
+				
+					$post = $post.'<div class="kc_item"><span>'.$rss[0].'</span>'.$audio.'|'.$video.'|'.$srt.'|'.$doc.'</div>';
+					if(isset($rss[1])){					
+					$post = $post.'<div class="kc_item" id="play'.$i.'" name="player" style="width:300px;display:none;">
+					
+					'.trim($rss[1]).'
+					
+					</div>';
+					}
 					}
 					$post = $post.sprintf('<div class="more3"><a href="%s" title="%s" rel="bookmark">>MORE</a></div>',
 	        						apply_filters('the_permalink', get_permalink()),
 									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) )
 	        						);   
 			}else{
-			foreach ($str as $key => $result){			
-					$rss =explode("|", $result);
-					$post = $post.sprintf('<div class="kc_item"><span>%s</span> 音频 <a href="%s"></a>|<a href="https://www.youtube.com/embed/%s?autoplay=1&autohide=0">视频</a>|<a href="%s">字幕</a>|<a href="%s">文档</a></div>',$rss[0],$rss[1],$rss[4],$rss[3],$rss[5]); 
-					}
+				$i=1;
+				foreach ($str as $key => $result){			
+				$rss =explode("|", $result);					
+				if($rss[1]!=""){
+				$play= "javascript:showplayer('play".$i."');";
+				$audio = '<a href="'.$play.'">音频</a>|<a href="'.$rss[1].'">下载</a>';			
+				}else{
+				$audio = '<span class="tbd">音频</span>';
+				}
+				if($rss[2]!=""){
+				$video = '<a href="https://www.youtube.com/embed/'.$rss[2].'?autoplay=1">视频</a>';
+				}else{
+				$video = '<span class="tbd">视频</span>';
+				}
+				if($rss[3]!=""){
+				$srt = '<a href="'.$rss[3].'">字幕</a>';
+				}else{
+				$srt = '<span class="tbd">字幕</span>';
+				}
+				if($rss[4]!=""){
+				$doc = '<a href="'.$rss[4].'">文档</a>';
+				}else{
+				$doc = '<span class="tbd">文档</span>';
+				}
+				
+				$post = $post.'<div class="kc_item"><span>'.$rss[0].'</span>'.$audio.'|'.$video.'|'.$srt.'|'.$doc.'</div>';
+				if(isset($rss[1])){					
+					$post = $post.'<div class="kc_item" id="play'.$i.'" name="player" style="width:300px;display:none;">
+					
+					'.trim($rss[1]).'
+					
+					</div>';
+				}
+				$i++;
+				}
 			}
+			$post = apply_filters('the_content', $post);
 			
 		}elseif(is_month()){
 			$post = "";
@@ -646,9 +710,10 @@ function kcplayer(){
 		$ca = get_category($cat);
 		$parent_id = $ca->category_parent;			
 		if($root_id =='417'|| $parent_id =="342" || $cat=="342"||$cat=="298"){
-			echo '<div class="kc_player"><iframe id="ytplayer" name="kcplayer" type="text/html" width="600" height="366" src="http://test.buddhistweb.org/wp-content/uploads/2014/01/player.htm" frameborder="0" allowfullscreen scrolling="no"></iframe></div>';
+			if(is_single()){$single = ' style="margin:10px 310px;"';}else {$single = "";}
+			echo '<div class="kc_player"'.$single.'><iframe id="ytplayer" name="kcplayer" type="text/html" width="600" height="366" src="http://test.buddhistweb.org/wp-content/uploads/2014/01/player.htm" frameborder="0" allowfullscreen scrolling="no"></iframe></div>';
 		}
-		if($parent_id="388"||$cat="388"){
+		if($parent_id="388"||$cat="388"||$root_id =='417'){
 			echo '<script language="javascript">
 				function showplayer(objId){
 				var objDiv=document.getElementById(objId); 

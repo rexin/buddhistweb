@@ -848,8 +848,11 @@ a.more2,.more3{
 	float:left;
 }
 .kc_item a{
-	margin:0 15px;
+	margin:0 10px;
 	color:#343434;
+}
+.tbd{
+	margin:0 10px;
 }
 .kc-thumb{
 	width:120px;
@@ -862,7 +865,9 @@ a.more2,.more3{
 	width:120px;
 }
 .kc_title .entry-title{
-	width:120px;	
+	width:120px;
+	text-align:center;
+	margin: 10px 4px;	
 }
 .kc_player{
 	margin: 0 auto;
@@ -894,5 +899,5 @@ a.more2,.more3{
 .wp-pagenavi span.extend{border:0;}
 .booklist li{list-style:none;}
 .ab_item {height:30px;}
-.ab_item p {width:200px;float:left;}
-.ab_item a {margin:0 15px;}
+.ab_item p,.kc_item > p {width:200px;float:left;}
+.ab_item a{margin:0 15px;}

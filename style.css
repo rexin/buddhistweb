@@ -39,7 +39,7 @@ This work, like WordPress, is released under GNU General Public License, version
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif:700);
 
 /* Overriding Thematic's styles for congruity with WP-Admin > Appearance > Header default header text color settings */
-body{
+body,h4{
 	font-family: 'Microsoft Yahei',simhei,sans-serif;
 	font-size:14px;
 	min-width:1020px;
@@ -64,6 +64,16 @@ tr {
 }
 a:link{
 	text-decoration: none;
+}
+a:link {
+    color:#2d2d2d;
+}
+a:visited {
+    color:#2d2d2d;
+}
+a:active,
+a:hover {
+    color: #ffcc99;
 }
 #wrapper {
     width:1020px;	
@@ -180,31 +190,34 @@ a:link{
 .submenu li a:hover{
 	 color:#ffffff;
 }
-.menu-item-13050 ul.sub-menu,.cat_383,#nav-below-383 .wp-pagenavi span.current {
+.cat_1,.cat_1 .wp-pagenavi span.current {
+	background:#02448a;
+}
+.menu-item-13050 ul.sub-menu,.cat_383,.cat_383 .wp-pagenavi span.current {
 	 background:#012348;
 }
-.menu-item-13046 ul.sub-menu,.cat_66,#nav-below-66 .wp-pagenavi span.current {
+.menu-item-13046 ul.sub-menu,.cat_66,.cat_66 .wp-pagenavi span.current {
 	 background:#B28146;
 }
-.menu-item-13063 ul.sub-menu,.cat_384,#nav-below-384 .wp-pagenavi span.current {
+.menu-item-13063 ul.sub-menu,.cat_384,.cat_384 .wp-pagenavi span.current {
 	 background:#637D36;
 }
-.menu-item-13067 ul.sub-menu,.cat_96,#nav-below-96 .wp-pagenavi span.current,.cat_411,#nav-below-411 .wp-pagenavi span.current{
+.menu-item-13067 ul.sub-menu,.cat_96,.cat_96 .wp-pagenavi span.current,.cat_411,.cat_411 .wp-pagenavi span.current{
 	 background:#BA6D1F;
 }
-.menu-item-13071 ul.sub-menu,.cat_417,#nav-below-284 .wp-pagenavi span.current {
+.menu-item-13071 ul.sub-menu,.cat_417,.cat_284 .wp-pagenavi span.current {
 	 background:#015055;
 }
-.menu-item-13078 ul.sub-menu,.cat_295,#nav-below-295 .wp-pagenavi span.current {
+.menu-item-13078 ul.sub-menu,.cat_295,.cat_295 .wp-pagenavi span.current {
 	 background:#531043;
 }
-.menu-item-13082 ul.sub-menu,.cat_241,#nav-below-241 .wp-pagenavi span.current {
+.menu-item-13082 ul.sub-menu,.cat_241,.cat_241 .wp-pagenavi span.current {
 	 background:#7e1223;
 }
-.menu-item-13090 ul.sub-menu,.cat_279,#nav-below-279 .wp-pagenavi span.current {
+.menu-item-13090 ul.sub-menu,.cat_279,.cat_279 .wp-pagenavi span.current {
 	 background:#A58701;
 }
-.menu-item-13095 ul.sub-menu,.cat_386,#nav-below-386 .wp-pagenavi span.current {
+.menu-item-13095 ul.sub-menu,.cat_386,.cat_386 .wp-pagenavi span.current {
 	 background:#874c70;
 }
 /*Menu end*/
@@ -369,14 +382,16 @@ a:link{
 }
 .s_desp h1{
 	font: 10px 'Droid Sans', sans-serif;
+	margin-bottom:5px; 
 } 
 .s_desp h2 a{
 	font-size: 14px; color: #2d2d2d; margin-top: 10px; margin-bottom: 7px;
 }
 .s_desp h2 a:link{  color: #2d2d2d;  }
-.s_desp span{
+.s1 p,.s2 p,.s3 p,.s4 p{
 	font: 9px 'Droid Sans', sans-serif;
 	color:#999999;
+	margin-top:8px;
 } 
 /*main-position*/
 .main_pos{
@@ -418,6 +433,7 @@ a:link{
 	margin-top:16px; 
 	float: left;
 	width:130px;
+	font-size:12px;
 }
 .mp_content span{
 	margin-top:10px;
@@ -761,7 +777,7 @@ a:link{
 .entry-content .wp-post-image {
 float: left;
 padding: 0;
-margin: 0 20px 40px 0;
+margin: 5px 20px 40px 0;
 }
 .entry-title{
 	color:#2d2d2d;
@@ -771,8 +787,12 @@ margin: 0 20px 40px 0;
 }
 .entry-content{
 	padding: 7px 0 0;
-	font-size:12px;
+	font-size:14px;
+	line-height: 24px;
 	color:#666666;
+}
+.entry-content h4 {
+	font-size:14px;	
 }
 a.more2,.more3{
 	font-family:Verdana, Arial, sans-serif;
@@ -780,10 +800,13 @@ a.more2,.more3{
 	text-decoration: underline;
 }
 .navigation {
+	padding-top:20px;
 	text-align:center;
+	background:#ffffff;
 }
 .wp-pagenavi {
 	display:inline;	
+	background:#ffffff;
 }
 .wp-pagenavi a, .wp-pagenavi a:link, .wp-pagenavi span,span.extend{
 	border: 0;
@@ -820,7 +843,7 @@ a.more2,.more3{
 }
 .kc_item,.more3{
 	line-height: 30px;
-	width:415px;
+	width:73%;
 	margin-left:32px;
 	float:left;
 }
@@ -832,6 +855,7 @@ a.more2,.more3{
 	width:120px;
 	height: 80px;
 	border: 1px solid #9C9698;
+	margin-top:16px;
 }
 .kc_title{
 	float: left;
@@ -840,3 +864,35 @@ a.more2,.more3{
 .kc_title .entry-title{
 	width:120px;	
 }
+.kc_player{
+	margin: 0 auto;
+	width:600px;
+}
+
+.yt_item {
+    border-bottom: 1px dotted #CCCCCC;
+    float: left;
+    height: 140px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    text-align: center;
+    width: 120px;
+}
+.yt_item img{
+	margin-bottom:10px; 
+}
+.singel-title{
+	font-size:18px;
+	text-align: center;
+	color:#000000;
+	margin-bottom:15px; 
+}
+.children li{list-style:none}
+.yendifplayer .yf-skin .yf-controls{z-index:0;}
+#ims-thumbs .thumbs li img {margin-left: 6px;}
+.wp-pagenavi span.extend{border:0;}
+.booklist li{list-style:none;}
+.ab_item {height:30px;}
+.ab_item p {width:200px;float:left;}
+.ab_item a {margin:0 15px;}

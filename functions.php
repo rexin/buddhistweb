@@ -269,9 +269,40 @@ function sidebar_left() { ?>
 				<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
 			<?php endwhile;  wp_reset_postdata();
 			}elseif(!is_month()){		
+			if($root_id=="386"){
+			wp_list_categories("child_of=$root_id&title_li=&hide_empty=1&depth=2");
+			?>
+			
+				<li class="cat-item">
+				<a title="查看图库" href="/albums/gallery/">图库</a>
+				<ul class="children">
+				<li class="cat-item">
+				<a href="/albums/%e8%af%b8%e4%bd%9b%e8%8f%a9%e8%90%a8/">诸佛菩萨</a>
+				</li>
+				<li class="cat-item">
+				<a href="/albums/%e4%bc%a0%e6%89%bf%e4%b8%8a%e5%b8%88/">传承上师</a>
+				</li>
+				<li class="cat-item">
+				<a href="/albums/%e5%9c%a3%e5%9c%b0%e5%96%87%e8%8d%a3/">圣地喇荣</a>
+				</li>
+				<li class="cat-item">
+				<a href="/albums/%e5%90%84%e5%9b%bd%e5%88%86%e4%bc%9a/">各国分会</a>
+				</li>
+				<li class="cat-item">
+				<a href="/albums/%e5%85%ad%e5%ba%a6%e4%b8%87%e8%a1%8c/">六度万行</a>
+				</li>
+				<li class="cat-item">
+				<a href="/albums/%e7%8e%af%e4%bf%9d%e6%8a%a4%e7%94%9f/">环保护生</a>
+				</li>
+				</ul>
+				</li>
+			
+			<?php
+			}else{
 			wp_list_categories("child_of=$root_id&title_li=&hide_empty=1&depth=1");
+			}
+			
 			}elseif(is_month()){
-			echo "<h2>历史更新</h2>";
 			wp_get_archives("type=monthly&format=html&show_post_count=true"); 
 			}
 			
@@ -282,7 +313,7 @@ function sidebar_left() { ?>
 	</div>
 	<?php
 	
-if(!is_single() || get_category_root_id($cat)=='383'){
+if(!is_single() || get_category_root_id($cat)=='383' || is_single('4098')){
 
 $img_a['1']= get_field('img-right-1a','13110');
 $img_b['1']= get_field('img-right-1b','13110');
@@ -368,7 +399,7 @@ $bread = " breadcrumbs1";
 if(is_singular( 'ims_gallery' )){
 	$cat = 386;
 	$bread = " breadcrumbs2";
-}elseif(is_tax( "ims_album" )){
+}elseif(is_tax( "ims_album") || is_single('4098' )){
 	$cat = 386;
 	$bread = " breadcrumbs1";
 }elseif(is_single()){
@@ -423,7 +454,8 @@ if (is_single()) { ?>
 		} else { 
 		$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
 		$root_id = get_category_root_id($cat);?>
-			<div id="nav-below-<?php echo $root_id;?>" class="navigation">
+		
+			<div id="nav-below" class="navigation cat_<?php echo $root_id;?>">
                 <?php if(function_exists('wp_pagenavi')) { ?>
                 <?php wp_pagenavi(); ?>
                 <?php } else { ?>  
@@ -442,6 +474,8 @@ function childtheme_override_postheader_posttitle(){
 		$posttitle = "\n\n\t\t\t\t\t";
 		$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
 		$root_id = get_category_root_id($cat);
+		$ca = get_category($cat);
+		$parent_id = $ca->category_parent;		
 		if ( !$title_content = get_the_title() )  
 			$title_content = '<a href="' . get_permalink() . '">' . _x('(Untitled)', 'Default title for untitled posts', 'thematic') . '</a>';
 	    if($root_id =='411'){		
@@ -470,8 +504,10 @@ function childtheme_override_postheader_posttitle(){
 									get_the_post_thumbnail(get_the_ID(), $size, $attr), $posttitle);
 					}				
 			}
-		}elseif (is_single() || is_page()) {
-	        $posttitle .= '<h1 class="entry-title">' . $title_content . "</h1>\n";
+		} elseif($parent_id =='342'||$cat=="342"){
+			$posttitle = "";
+		} elseif (is_single() || is_page()) {
+	        $posttitle .= '<h1 class="entry-title singel-title">' . $title_content . "</h1>\n";
 	    } elseif (is_404()) {    
 	        $posttitle .= '<h1 class="entry-title">' . __('Not Found', 'thematic') . "</h1>\n";
 	    } else {
@@ -494,12 +530,54 @@ function childtheme_override_content(){
 			$category = get_the_category();	
 			$cat=$category[0]->cat_ID;			
 			}
-		$root_id = get_category_root_id($cat);		
+		$root_id = get_category_root_id($cat);
+		$ca = get_category($cat);
+		$parent_id = $ca->category_parent;			
 		if($root_id =='411'){
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
 			$post = str_replace(']]>', ']]&gt;', $post);			
 			$post = $post.'<div class="book-link"><a href="'.get_field('online').'" >在线阅读</a><a href="'.get_field('download').'">文档下载</a></div></div></div>';
+		}elseif($parent_id=='342'||$cat=="342" ||$cat=="298"){
+			$post = get_the_content( thematic_more_text() );
+			$post = apply_filters('the_content', $post);
+			$post = trim(strip_tags($post));
+			$yt = explode("\n", $post);
+			$post ="";
+			if($cat=="298"&&!is_single()&&count($yt)>8){
+			for ($i= 0;$i< 8; $i++){
+			$rs= explode("|", $yt[$i]);
+			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_substr($rs[1],0,16).'</a></span></div>';
+			}
+			$post = $post.sprintf('<div class="more2 more_'.$root_id.'"><a href="%s" title="%s" rel="bookmark">>MORE</a></div>',
+	        						apply_filters('the_permalink', get_permalink()),
+									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) )
+	        						); 
+			}else{
+			foreach ($yt as $key => $item){
+			$rs= explode("|", trim($item));
+			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_substr($rs[1],0,16).'</a></span></div>';
+			}
+			}	
+		}elseif($parent_id="388"||$cat="388"){
+			$post = get_the_content( thematic_more_text() );					
+			$yt = explode("\n", $post);
+			$post ='<ul class="booklist">';
+			$i=1;
+			foreach ($yt as $key => $item){
+			$rs= explode("|", trim($item));
+			$play= "javascript:showplayer('play".$i."');";
+			$post = $post.'<li class="ab_item"><p>'.trim($rs[0]).'</p><a title="'.trim($rs[0]).'" href="'.trim($rs[1]).'">下载</a><a href="'.$play.'">播放</a>
+			</li>
+			<li id="play'.$i.'" name="player" style="width:300px;display:none;">
+			
+			'.trim($rs[1]).'
+			
+			</li>';
+			$i++;
+			}
+			$post = $post."</ul>";
+			$post = apply_filters('the_content', $post);	
 		}elseif($root_id =='417'){
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
@@ -509,7 +587,7 @@ function childtheme_override_content(){
 			if(!is_single()){
 			for ($i= 0;$i< 3; $i++){			
 					$rss =explode("|", $str[$i]);
-					$post = $post.sprintf('<div class="kc_item"><span>%s</span><a href="%s">音频</a>|<a href="%s">视频下载</a>|<a href="%s">字幕</a>|<a href="https://www.youtube.com/embed/%s?autoplay=1&autohide=0">视频播放</a>|<a href="%s">文档</a></div>',$rss[0],$rss[1],$rss[2],$rss[3],$rss[4],$rss[5]); 
+					$post = $post.sprintf('<div class="kc_item"><span>%s</span> 音频 <a href="%s"></a>|<a href="https://www.youtube.com/embed/%s?autoplay=1&autohide=0">视频</a>|<a href="%s">字幕</a>|<a href="%s">文档</a></div>',$rss[0],$rss[1],$rss[4],$rss[3],$rss[5]); 
 					}
 					$post = $post.sprintf('<div class="more3"><a href="%s" title="%s" rel="bookmark">>MORE</a></div>',
 	        						apply_filters('the_permalink', get_permalink()),
@@ -518,11 +596,17 @@ function childtheme_override_content(){
 			}else{
 			foreach ($str as $key => $result){			
 					$rss =explode("|", $result);
-					$post = $post.sprintf('<div class="kc_item"><span>%s</span><a href="%s">音频</a>|<a href="%s">视频下载</a>|<a href="%s">字幕</a>|<a href="https://www.youtube.com/embed/%s?autoplay=1&autohide=0">视频播放</a>|<a href="%s">文档</a></div>',$rss[0],$rss[1],$rss[2],$rss[3],$rss[4],$rss[5]); 
+					$post = $post.sprintf('<div class="kc_item"><span>%s</span> 音频 <a href="%s"></a>|<a href="https://www.youtube.com/embed/%s?autoplay=1&autohide=0">视频</a>|<a href="%s">字幕</a>|<a href="%s">文档</a></div>',$rss[0],$rss[1],$rss[4],$rss[3],$rss[5]); 
 					}
 			}
 			
-		} elseif ( strtolower($thematic_content_length) == 'full' ) {
+		}elseif(is_month()){
+			$post = "";
+		}elseif($cat=="388"||$parent_id=="388"){
+			$post = get_the_content( thematic_more_text() );
+			$post = apply_filters('the_content', $post);
+			$post = str_replace(']]>', ']]&gt;', $post);
+		}elseif ( strtolower($thematic_content_length) == 'full' ) {
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
 			$post = str_replace(']]>', ']]&gt;', $post);
@@ -550,4 +634,28 @@ function childtheme_override_content(){
 		}
 		echo apply_filters('thematic_post', $post);
 	} 
-		
+//course player
+add_action('thematic_abovecontent','kcplayer');
+function kcplayer(){
+	$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+		if(is_single()&&!is_singular( 'ims_gallery' )){
+			$category = get_the_category();	
+			$cat=$category[0]->cat_ID;			
+			}
+		$root_id = get_category_root_id($cat);
+		$ca = get_category($cat);
+		$parent_id = $ca->category_parent;			
+		if($root_id =='417'|| $parent_id =="342" || $cat=="342"||$cat=="298"){
+			echo '<div class="kc_player"><iframe id="ytplayer" name="kcplayer" type="text/html" width="600" height="366" src="http://test.buddhistweb.org/wp-content/uploads/2014/01/player.htm" frameborder="0" allowfullscreen scrolling="no"></iframe></div>';
+		}
+		if($parent_id="388"||$cat="388"){
+			echo '<script language="javascript">
+				function showplayer(objId){
+				var objDiv=document.getElementById(objId); 
+				var divs = document.getElementsByName("player");
+				for(var i=0;i<divs.length;i++){ divs[i].style.display="none";}
+				objDiv.style.display="";
+				}
+					</script>';
+		}
+	}

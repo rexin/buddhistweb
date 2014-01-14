@@ -15,6 +15,17 @@
     // action hook for placing content above #container
     thematic_abovecontainer();
 ?>
+	
+	<?php 
+	$str = file_get_contents("http://fypd.zhibeifw.com");
+	if (stristr($str,'采用简化的直播页面')) { ?>
+	<div style="width:1020px;overflow:hidden;">
+	<div style="margin-top:-150px;margin-left:-10px;">
+	<iframe src="http://fypd.zhibeifw.com" frameborder="0" width="1140"  height="630"  scrolling="no"></iframe>
+	</div>
+	</div>
+	<? }else{
+	?>
 	<style type="text/css">
 	#branding,#wrapper,#main{width:1090px;}	
 	</style>
@@ -25,6 +36,7 @@
 	</div>
 
 <?php 
+	}
     // action hook for placing content below #container
     thematic_belowcontainer();
     

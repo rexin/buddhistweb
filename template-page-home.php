@@ -24,20 +24,20 @@
 		<div id="left2">
 		<div class="left_s3"><table id="table1">
 			  <tr>
-				<td><a href="">国际佛学会</a></td>
-				<td><a href="">大洋洲分会</a></td>
+				<td><a href="/category/asso/gjxh/">国际佛学会</a></td>
+				<td><a href="/category/asso/oceania/">大洋洲分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="">加拿大分会</a></td>
-				<td><a href="">港台分会</a></td>
+				<td><a href="/category/asso/ca-branch/">加拿大分会</a></td>
+				<td><a href="/category/asso/hk-taiwan/">港台分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="">欧洲分会</a></td>
-				<td><a href="">其他分会</a></td>
+				<td><a href="/category/asso/eur-branch/">欧洲分会</a></td>
+				<td><a href="/category/asso/other-branch/">其他分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="">美国分会</a></td>
-				<td><a href=""></a></td>
+				<td><a href="/category/asso/us-branch/">美国分会</a></td>
+				<td> </td>
 			  </tr>
 		</table></div>
 		</div>
@@ -72,10 +72,10 @@
 		<div class="pic_link">
 			<ul>
 			     
-				    <li mid="0"  class="xz"  ><div class="slider_tri s1"><span class="s_tri">▼</span></div><div class="s1 s_desp s_d1"><h1><?php echo $img_s1['caption'];?></h1><h2><a href="<?php echo $img_s1['alt'];?>" title="" alt=""><?php echo $img_s1['title'];?></a></h2><span><?php echo $img_s1['description'];?></span></div></li>			     
-				    <li mid="1" ><div class="slider_tri s2"><span class="s_tri">▼</span></div><div class="s2 s_desp"><h1><?php echo $img_s2['caption'];?></h1><h2><a href="<?php echo $img_s2['alt'];?>" title="" alt=""><?php echo $img_s2['title'];?></a></h2><span><?php echo $img_s2['description'];?></span></div></li>			     
-				    <li mid="2" ><div class="slider_tri s3"><span class="s_tri">▼</span></div><div class="s3 s_desp"><h1><?php echo $img_s3['caption'];?></h1><h2><a href="<?php echo $img_s3['alt'];?>" title="" alt=""><?php echo $img_s3['title'];?></a></h2><span><?php echo $img_s3['description'];?></span></div></li>
-					<li mid="3 " ><div class="slider_tri s4"><span class="s_tri">▼</span></div><div class="s4 s_desp"><h1><?php echo $img_s4['caption'];?></h1><h2><a href="<?php echo $img_s4['alt'];?>" title="" alt=""><?php echo $img_s4['title'];?></a></h2><span><?php echo $img_s4['description'];?></span></div></li>
+				    <li mid="0"  class="xz"  ><div class="slider_tri s1"><span class="s_tri">▼</span></div><div class="s1 s_desp s_d1"><h1><?php echo $img_s1['caption'];?></h1><h2><a href="<?php echo $img_s1['alt'];?>" title="" alt=""><?php echo $img_s1['title'];?></a></h2><p><?php echo $img_s1['description'];?></p></div></li>			     
+				    <li mid="1" ><div class="slider_tri s2"><span class="s_tri">▼</span></div><div class="s2 s_desp"><h1><?php echo $img_s2['caption'];?></h1><h2><a href="<?php echo $img_s2['alt'];?>" title="" alt=""><?php echo $img_s2['title'];?></a></h2><p><?php echo $img_s2['description'];?></p></div></li>			     
+				    <li mid="2" ><div class="slider_tri s3"><span class="s_tri">▼</span></div><div class="s3 s_desp"><h1><?php echo $img_s3['caption'];?></h1><h2><a href="<?php echo $img_s3['alt'];?>" title="" alt=""><?php echo $img_s3['title'];?></a></h2><p><?php echo $img_s3['description'];?></p></div></li>
+					<li mid="3 " ><div class="slider_tri s4"><span class="s_tri">▼</span></div><div class="s4 s_desp"><h1><?php echo $img_s4['caption'];?></h1><h2><a href="<?php echo $img_s4['alt'];?>" title="" alt=""><?php echo $img_s4['title'];?></a></h2><p><?php echo $img_s4['description'];?></p></div></li>
 			     
 			</ul>
 		</div>
@@ -119,7 +119,7 @@
 		<ul>
 		<?php
     $recentPosts = new WP_Query();
-    $recentPosts->query('cat=284&showposts=5');
+    $recentPosts->query('cat=417&showposts=5');
 ?>
 <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
     	<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>		
@@ -141,7 +141,7 @@
 <ul>
 <?php
     global $post;
-	$myposts = get_posts('category=-6&numberposts=5');
+	$myposts = get_posts('category=-1&numberposts=5');
 	foreach($myposts as $post) :
 ?>
 

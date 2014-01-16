@@ -161,7 +161,7 @@ add_action('thematic_child_init', 'childtheme_setup');
 	?>
 	</style>
 
-	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery.js"></script>
 	<script type="text/javascript">
              var j = $.noConflict(true);
 	</script>
@@ -348,8 +348,7 @@ $img_b['386']= get_field('img-right-9b','13110');
 		the_field('right_txt_1a','13121');		
 		}else{?>
 		<h2>最新更新╱<span>UPDATE</span></h2>
-		<ul><?php
-		
+		<ul><?php		
 		$recentPosts = new WP_Query();
 		$recentPosts->query("cat=$root_id&showposts=5");
 		while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
@@ -366,17 +365,29 @@ $img_b['386']= get_field('img-right-9b','13110');
 		<?php 
 		if (get_category_root_id($cat)=='383'){
 		the_field('right_txt_1b','13121');			
-		}else{?>		
-		<?php 
-		$the_query = new WP_Query(array('cat'=>$cat,'post__in'=>get_option('sticky_posts'),'posts_per_page'=>1,'ignore_sticky_posts' =>1));
-		while($the_query->have_posts ()):$the_query->the_post();
-		?>
+		}else{
+		$the_query = new WP_Query(array('cat'=>$cat,'post__in'=>get_option('sticky_posts')));
+		$sticky_sum = $the_query->found_posts;
+		wp_reset_postdata();		
+		if($sticky_sum == 0){
+		the_field('right_txt_1b','13121');	
+		}elseif($sticky_sum == 1){?>		
 		<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 		<p><?php echo mb_substr(get_the_excerpt(),0,64)."..."; ?></p>
 		<div class="more sticky"><a href="<?php echo the_permalink() ?>">MORE</a></div>
+		<?php 
+		}elseif($sticky_sum >1){ ?>		
+		<h2>内容推荐╱<span>FEATURED</span></h2>
+		<ul>
+		<?php 
+		$the_query = new WP_Query(array('cat'=>$cat,'post__in'=>get_option('sticky_posts'),'posts_per_page'=>4,'ignore_sticky_posts' =>1));
+		while($the_query->have_posts ()):$the_query->the_post();
+		?>		
+		<li><a href="<?php the_permalink() ?>" title="<?php the_title();?>" rel="bookmark"><?php echo mb_strimwidth(get_the_title(), 0, 21, "…"); ?></a></li>		
 		<?php endwhile; wp_reset_postdata();?>
-		
+		</ul>
 		<?php }
+		}
 		?>
 	</div>
 </div>
@@ -444,7 +455,9 @@ function new_excerpt_more($more) {
 add_filter('excerpt_more', 'new_excerpt_more');
 //
 function childtheme_override_nav_below(){
-if (is_single()) { ?>
+$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+$root_id = get_category_root_id($cat);
+if (is_single()||$root_id==96) { ?>
 
 			<div id="nav-below" class="navigation">
 				
@@ -452,8 +465,8 @@ if (is_single()) { ?>
 
 <?php
 		} else { 
-		$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
-		$root_id = get_category_root_id($cat);?>
+		
+		?>
 		
 			<div id="nav-below" class="navigation cat_<?php echo $root_id;?>">
                 <?php if(function_exists('wp_pagenavi')) { ?>
@@ -479,7 +492,7 @@ function childtheme_override_postheader_posttitle(){
 		if ( !$title_content = get_the_title() )  
 			$title_content = '<a href="' . get_permalink() . '">' . _x('(Untitled)', 'Default title for untitled posts', 'thematic') . '</a>';
 	    if($root_id =='411'){		
-			$posttitle .= '<div class="book-txt"><h1 class="entry-title"><a href="'.get_field('online').'" >《'. $title_content . "》</a></h1>\n";
+			$posttitle .= '<div class="book-txt"><h1 class="entry-title">《'. $title_content . "》</h1>\n";
 			if ( apply_filters( 'thematic_post_thumbs', TRUE) ) {
 				$size = apply_filters( 'thematic_post_thumb_size' , array(150,150) );
 				$attr = apply_filters( 'thematic_post_thumb_attr', array('title'	=> sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
@@ -537,7 +550,7 @@ function childtheme_override_content(){
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
 			$post = str_replace(']]>', ']]&gt;', $post);			
-			$post = $post.'<div class="book-link"><a href="'.get_field('online').'" >在线阅读</a><a href="'.get_field('download').'">文档下载</a></div></div></div>';
+			$post = $post.'</div></div>';
 		}elseif($parent_id=='342'||$cat=="342" ||$cat=="298"){
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
@@ -724,3 +737,125 @@ function kcplayer(){
 					</script>';
 		}
 	}
+//books
+function  childtheme_override_category_loop(){
+	$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
+	$root_id = get_category_root_id($cat);
+	if($root_id == 96){
+		$categories = get_term_children($cat, 'category');
+		$count = count($categories);
+		if($count>0){
+		$categories = get_categories("parent=$cat&hide_empty=0&orderby=id&order=desc");
+		$count = count($categories);		
+		$pagenum = 1;		
+		$perpage = 10;		
+		$pages = ceil($count/$perpage);		
+		
+		for($i=0;$i<$pages;$i++) {
+			$start = ($pagenum-1)*$perpage;	
+			$data = array_slice($categories, $start, $perpage);
+			if($i==0){
+			echo '<div id=p'.$pagenum.' name="booklist" style=""><ul class="books">';
+			}else{
+			echo '<div id=p'.$pagenum.' name="booklist" style="display:none;"><ul class="books">';
+			}
+			$pagenum++;	
+			foreach($data as $category) {
+			$subcat = get_term_children($category->term_id, 'category');
+			if($category->count!=0||count($subcat)!=0){
+			$bookitem = '<li class="bk_item">'.sprintf('<a href="%s" title="%s"><img src="%s"></a><p class="bk_title"><a href="%s" title="%s">《%s》</a></p><p>%s</p><p class="booklink"><a href="%s" title="%s">在线阅读</a>',get_category_link($category->term_id),$category->name,get_field('cat_img','category_'.$category->term_id),get_category_link($category->term_id),$category->name,$category->name,category_description($category->term_id),get_category_link($category->term_id),$category->name);
+			if(get_field('doc','category_'.$category->term_id)){
+			$bookitem = $bookitem.sprintf('<a href="%s">文档下载</a>',get_field('doc','category_'.$category->term_id));
+			}
+			echo $bookitem.'</p></li>';
+			}
+			}
+			?>	
+			</ul></div>
+		<?php
+		}?>
+		<div id="nav-below" class="navigation">				
+			<div class="wp-pagenavi">		
+			<?php 
+			for($i=0;$i<$pages;$i++) {
+			$page = $i+1;
+			$bk= "javascript:showbooks('p".$page."');";
+			echo '<a onclick="window.scrollTo(0,0)" class="page larger" href="'.$bk.'">'.$page.'</a>';
+			}?>		
+			</div>
+		</div>
+		<script language="javascript">
+				function showbooks(objId){
+				var objDiv=document.getElementById(objId); 
+				var divs = document.getElementsByName("booklist");
+				for(var i=0;i<divs.length;i++){ divs[i].style.display="none";}
+				objDiv.style.display="";
+				}
+		</script>
+		<?php 
+		}else{
+		while ( have_posts() ) : the_post(); 
+
+				// action hook for insterting content above #post
+				thematic_abovepost();
+				?>
+	
+				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
+
+				<?php
+
+	            	// creating the post header
+	            	thematic_postheader();
+	            ?>
+     			
+					<div class="entry-content">
+						
+						<?php thematic_content(); ?>
+	
+					</div><!-- .entry-content -->
+					
+					<?php thematic_postfooter(); ?>
+					
+				</div><!-- #post -->
+
+			<?php 
+				// action hook for insterting content below #post
+				thematic_belowpost();
+		
+		endwhile;
+		
+		}
+		
+	}else{
+	while ( have_posts() ) : the_post(); 
+
+				// action hook for insterting content above #post
+				thematic_abovepost();
+				?>
+	
+				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
+
+				<?php
+
+	            	// creating the post header
+	            	thematic_postheader();
+	            ?>
+     			
+					<div class="entry-content">
+						
+						<?php thematic_content(); ?>
+	
+					</div><!-- .entry-content -->
+					
+					<?php thematic_postfooter(); ?>
+					
+				</div><!-- #post -->
+
+			<?php 
+				// action hook for insterting content below #post
+				thematic_belowpost();
+		
+		endwhile;
+		}
+
+}

@@ -762,7 +762,7 @@ a:hover {
 	color:#ffffff;
 	font-size:12px;
 }
-.right_ps1 li{	
+.right_ps1 li,.right_ps2 li{	
 	margin-bottom:18px; 
 	margin-left:10px;
 }
@@ -836,11 +836,10 @@ a.more2,.more3{
 	float:left;
 	width:447px;	
 }
-.book-link a{
-	margin-right:14px;
-	color: #BA6D1F;
-	text-decoration:underline;
+.booklink {
+	margin-left:116px
 }
+
 .kc_item,.more3{
 	line-height: 30px;
 	width:73%;
@@ -901,3 +900,47 @@ a.more2,.more3{
 .ab_item {height:30px;}
 .ab_item p,.kc_item > p {width:200px;float:left;}
 .ab_item a{margin:0 15px;}
+.img-name{
+	font-size: 14px;
+	line-height: 18px;
+}
+.booklink a{
+	margin-right:14px;
+	color: #BA6D1F;
+	text-decoration:underline;
+	font-size:12px;	
+}
+.books li{
+	list-style: none;
+	margin-bottom:50px;
+}
+.bk_item {
+	min-height: 120px;
+}
+.bk_item img{
+	float: left;
+	margin-right:26px;
+	margin-top: 6px;
+	padding-bottom:30px;  
+}
+.bk_item p{
+	font-size:12px;
+	line-height:24px;
+	color:#676767
+}
+p.bk_title{
+	margin-bottom:14px; 
+	font-size:14px;
+}
+
+.books_nav li {
+    float: left;
+    list-style: none;
+    margin-right: 20px;
+}
+ul.books_nav{
+	display: inline;
+}
+#book-nav {
+	text-align: center;
+}

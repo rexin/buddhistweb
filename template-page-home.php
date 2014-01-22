@@ -72,10 +72,10 @@
 		<div class="pic_link">
 			<ul>
 			     
-				    <li mid="0"  class="xz"  ><div class="slider_tri s1"><span class="s_tri">▼</span></div><div class="s1 s_desp s_d1"><h1><?php echo $img_s1['caption'];?></h1><h2><a href="<?php echo $img_s1['alt'];?>" title="" alt=""><?php echo $img_s1['title'];?></a></h2><p><?php echo $img_s1['description'];?></p></div></li>			     
-				    <li mid="1" ><div class="slider_tri s2"><span class="s_tri">▼</span></div><div class="s2 s_desp"><h1><?php echo $img_s2['caption'];?></h1><h2><a href="<?php echo $img_s2['alt'];?>" title="" alt=""><?php echo $img_s2['title'];?></a></h2><p><?php echo $img_s2['description'];?></p></div></li>			     
-				    <li mid="2" ><div class="slider_tri s3"><span class="s_tri">▼</span></div><div class="s3 s_desp"><h1><?php echo $img_s3['caption'];?></h1><h2><a href="<?php echo $img_s3['alt'];?>" title="" alt=""><?php echo $img_s3['title'];?></a></h2><p><?php echo $img_s3['description'];?></p></div></li>
-					<li mid="3 " ><div class="slider_tri s4"><span class="s_tri">▼</span></div><div class="s4 s_desp"><h1><?php echo $img_s4['caption'];?></h1><h2><a href="<?php echo $img_s4['alt'];?>" title="" alt=""><?php echo $img_s4['title'];?></a></h2><p><?php echo $img_s4['description'];?></p></div></li>
+				    <li mid="0"  class="xz"  ><div class="slider_tri s1"><span class="s_tri">▼</span></div><div class="s1 s_desp s_d1"><h1><?php the_field('p1_t1',13099);?></h1><h2><a href="<?php the_field('p1_t4',13099);?>" title="" alt=""><?php the_field('p1_t2',13099);?></a></h2><p><?php the_field('p1_t3',13099);?></p></div></li>			     
+				    <li mid="1" ><div class="slider_tri s2"><span class="s_tri">▼</span></div><div class="s2 s_desp"><h1><?php the_field('p2_t1',13099);?></h1><h2><a href="<?php the_field('p2_t4',13099);?>" title="" alt=""><?php the_field('p2_t2',13099);?></a></h2><p><?php the_field('p2_t3',13099);?></p></div></li>			     
+				    <li mid="2" ><div class="slider_tri s3"><span class="s_tri">▼</span></div><div class="s3 s_desp"><h1><?php the_field('p3_t1',13099);?></h1><h2><a href="<?php the_field('p3_t4',13099);?>" title="" alt=""><?php the_field('p3_t2',13099);?></a></h2><p><?php the_field('p3_t3',13099);?></p></div></li>
+					<li mid="3 " ><div class="slider_tri s4"><span class="s_tri">▼</span></div><div class="s4 s_desp"><h1><?php the_field('p4_t1',13099);?></h1><h2><a href="<?php the_field('p4_t4',13099);?>" title="" alt=""><?php the_field('p4_t2',13099);?></a></h2><p><?php the_field('p4_t3',13099);?></p></div></li>
 			     
 			</ul>
 		</div>
@@ -109,7 +109,7 @@
 <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
     	<div class="mp_content"><h4><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
 		<span><?php echo date('M.j,Y',get_the_time('U')); ?></span>
-		<p><?php echo mb_substr(get_the_excerpt(),0,50)."..."; ?></p>
+		<p><?php echo mb_substr(get_the_excerpt(),0,40)."..."; ?></p>
 <?php endwhile;  wp_reset_postdata();?>		
 </div></div>
 		<div class="main_pos">
@@ -134,7 +134,7 @@
 			
 		<div id="home-right">
 		<div id="right1"><h1>今日教言<span>╱DAILY QUOTE</span></h1>
-		<span class="right_s1">“</span><?php quotescollection_quote('show_author=0&random=0'); ?><span class="right_s2">”</span></div>
+		<span class="right_s1">“</span><p><?php $day=idate('d');the_field('day'.$day,'16959'); ?></p><span class="right_s2">”</span></div>
 		<div id="right2">
 		<h1>最新消息<span>╱NEWS</span></h1>
 			<div class='line7'><div class='line7'></div></div>
@@ -145,7 +145,7 @@
 	foreach($myposts as $post) :
 ?>
 
-    <li><span><?php echo date('j M',get_the_time('U')); ?> <?php the_category(' &gt; '); ?></span><p> <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title();?>"><?php echo mb_strimwidth(get_the_title(), 0, 36, "…"); ?></a></p></li>
+    <li><span><?php echo date('j M',get_the_time('U')); ?> <?php the_category(' &gt; '); ?></span><p> <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title();?>"><?php echo mb_strimwidth(get_the_title(), 0, 26, "…"); ?></a></p></li>
 <?php endforeach; ?></ul>			
 		<?php 
 		$arc_year = get_the_time('Y');

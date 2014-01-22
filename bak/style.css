@@ -39,7 +39,7 @@ This work, like WordPress, is released under GNU General Public License, version
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif:700);
 
 /* Overriding Thematic's styles for congruity with WP-Admin > Appearance > Header default header text color settings */
-body{
+body,h4{
 	font-family: 'Microsoft Yahei',simhei,sans-serif;
 	font-size:14px;
 	min-width:1020px;
@@ -48,10 +48,9 @@ body{
 p{
 	margin-bottom:0px;
 }
-.entry-content p{	
+#content_single .entry-content p{	
 	text-indent: 2em;
-	margin-bottom:14px; 
-	line-height: 24px;
+	margin-bottom:12px; 
 }
 ul{
 	margin-left:0; 
@@ -60,7 +59,7 @@ table {
     border:0;
     border-width:0;
     font-size:14px;
-    line-height:24px;
+    line-height:18px;
     margin:0;
     text-align:left;
 }
@@ -144,7 +143,6 @@ a:hover {
 	border-top: 1px dotted #7C7C7C;
 	margin-bottom:19px;
 }
-
 .sf-menu a{
 	border:none;
 	margin: 0;
@@ -202,7 +200,7 @@ a:hover {
 .menu-item-13050 ul.sub-menu,.cat_383,.cat_383 .wp-pagenavi span.current {
 	 background:#012348;
 }
-.menu-item-13046 ul.sub-menu,.cat_354,.cat_66,.cat_66 .wp-pagenavi span.current {
+.menu-item-13046 ul.sub-menu,.cat_66,.cat_66 .wp-pagenavi span.current {
 	 background:#B28146;
 }
 .menu-item-13063 ul.sub-menu,.cat_384,.cat_384 .wp-pagenavi span.current {
@@ -238,9 +236,6 @@ a:hover {
 #home-right{
 	width:225px;
 	min-height:600px;
-	height:auto !important; 
-	height:600px; 
-	overflow:visible;
 	float:left;
 }
 #right1{
@@ -306,12 +301,12 @@ a:hover {
 	
 }
 #right2 li span{
-	font: 12px "Droid Sans";		
+	font: 9px "Droid Sans";		
 }
 #right2 li p{
 	margin-top:5px;
 	margin-bottom:12px;
-	font-size:14px; 
+	font-size:12px; 
 }
 /*slider*/
 #slider{
@@ -344,7 +339,7 @@ a:hover {
 .pic_link li {
 	width: 133px;
 	height: 105px;	
-	line-height: 24px;
+	line-height: 18px;
 	padding-top: 5px;
 	padding-right: 1px;
 	float: left;
@@ -360,7 +355,7 @@ a:hover {
 .pic_link li a:hover {color: #999999; text-decoration: none;}
 .dashed_line{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #A9A9A9;border-bottom:1px dotted #A9A9A9;height:1px;}
 .slider_tri { background: transparent; color: transparent; width: 134px; height: 4px; display: block; top: 0; position: absolute; }
-.s_tri{ left: 60px; bottom: 6px; position: relative; font-size: 10px; }
+.s_tri{ left: 60px; bottom: 4px; position: relative; font-size: 10px; }
 .xz .s1{
 	background: #B54315;
 	color: #B54315;
@@ -386,19 +381,19 @@ a:hover {
 }
 .s_desp p{
 	color:#2d2d2d;
-	font-size:14px;
+	font-size:12px;
 	margin-bottom:7px; 
 }
 .s_desp h1{
-	font: 12px 'Droid Sans', sans-serif;
+	font: 10px 'Droid Sans', sans-serif;
 	margin-bottom:5px; 
 } 
 .s_desp h2 a{
 	font-size: 14px; color: #2d2d2d; margin-top: 10px; margin-bottom: 7px;
 }
-.s_desp h2 a:link,.s_desp h2 a:visited{  color: #2d2d2d;  }
+.s_desp h2 a:link{  color: #2d2d2d;  }
 .s1 p,.s2 p,.s3 p,.s4 p{
-	font: 12px 'Droid Sans', sans-serif;
+	font: 9px 'Droid Sans', sans-serif;
 	color:#999999;
 	margin-top:8px;
 } 
@@ -411,7 +406,7 @@ a:hover {
 }
 
 .main_pos h1,.mp_content h4{
-	font: 700 14px/24px "Microsoft Yahei";
+	font: 700 14px/20px "Microsoft Yahei";
 	color:#666666;
 }
 .mp_content h4 a:link{
@@ -421,7 +416,7 @@ a:hover {
 	color:#b54315;	
 }
 .mp_content p{
-	font-size:14px;
+	font-size:12px;
 	color:#666666;
 }
 .main_pos h1 span{
@@ -441,8 +436,8 @@ a:hover {
 .mp_content{
 	margin-top:16px; 
 	float: left;
-	width:145px;
-	font-size:14px;
+	width:130px;
+	font-size:12px;
 }
 .mp_content span{
 	margin-top:10px;
@@ -465,9 +460,6 @@ a:hover {
 #home-left{
 	width:228px;
 	min-height:600px;
-	height:auto !important; 
-	height:600px; 
-	overflow:visible;
 	float:left;
 	margin-bottom:40px;
 }
@@ -500,11 +492,11 @@ a:hover {
 }
 .left_s1{
 	font-size:20.94px;
-	line-height: 24px;	
+	line-height: 21px;	
 }
 .left_s1_2{
 	font-size:19.78px;
-	line-height: 24px;
+	line-height: 21px;
 }
 .left_s2{
 	font-size:34.91px;
@@ -523,7 +515,6 @@ a:hover {
 	width:87px;
 }
 #table1 a{
-	font-size:14px;
 	color:#ffffff;
 	text-decoration: none;
 }
@@ -556,7 +547,7 @@ a:hover {
 	}
 #left3 li a{
 	color:#666666;
-	font-size:14px;	
+	font-size:12px;	
 }
 .more a{
 	background: #B54315 url(images/a2.gif) no-repeat 4px center;
@@ -678,7 +669,8 @@ a:hover {
     width: 190px;
 }
 #content {
-	margin: 0 210px;	
+	margin: 0 210px;
+	padding:0 15px;
 }
 #sidebar_logo{
 	height: 92px;
@@ -712,21 +704,19 @@ a:hover {
 	color: #ffffff;
 }
 .entry-title{
-	font-size:16px;
+	font-size:14px;
 	font-family: 'Microsoft Yahei',simhei;
 	font-weight: normal;
 }
 #sidebar-ps1{	
 	min-height: 330px;
-	height:auto !important; 
-	height:330px; 
-	overflow:visible;
 	background-image: url(images/left2_bg2.png);
 	background-position: left bottom;
 	background-repeat: no-repeat;
+	padding-top:5px;
+	padding-bottom:50px;
 	text-align:left;
-	padding: 5px 25px 50px 35px;
-	line-height: 21px;
+	padding-left:40px;	
 }
 .s_right1{
 	width:190px;
@@ -737,10 +727,6 @@ a:hover {
 	background:#555555;
 	height: 445px;
 	margin-bottom:10px;	
-}
-.right_ps1 img,right_ps2 img{
-	width:190px;
-	height: 120px;
 }
 .right_ps1 .more a{
 	background: #555555 url(images/a2.gif) no-repeat 4px center;
@@ -769,24 +755,23 @@ a:hover {
 .right_ps1 h2,.right_ps2 h2,.right_ps2 h2 a {
 	font: 700 14px/23px "Microsoft Yahei";	
 	color:#ffffff;
-	margin-bottom:25px;	
-	padding:0 15px;
+	margin-bottom:35px;	
+	padding:0 10px 0 10px;
 }
 .right_ps1 h2 span,.right_ps2 span{
 	font-family:"Droid Serif";
 }
 .right_ps1 p,.right_ps2 p{
-	margin: 0 18px 12px 15px;
+	margin: 0 18px 25px 10px;
 	color:#ffffff;
-	font-size:14px;
-	line-height: 24px;
+	font-size:12px;
 }
 .right_ps1 li,.right_ps2 li{	
-	margin-bottom:12px; 
-	margin-left:15px;
+	margin-bottom:18px; 
+	margin-left:10px;
 }
 .right_ps2 li{
-	margin-left:15px;
+	margin-left:10px;
 }
 .right_ps1 li a,.right_ps2 li a{
 	background: url(images/a2.gif) no-repeat left center;
@@ -796,7 +781,7 @@ a:hover {
 .entry-content .wp-post-image {
 float: left;
 padding: 0;
-margin: 5px 20px 30px 0;
+margin: 5px 20px 40px 0;
 }
 .entry-title{
 	color:#2d2d2d;
@@ -808,7 +793,7 @@ margin: 5px 20px 30px 0;
 	padding: 7px 0 0;
 	font-size:14px;
 	line-height: 24px;
-	color:#666666;	
+	color:#666666;
 }
 .entry-content h4 {
 	font-size:14px;	
@@ -817,8 +802,6 @@ a.more2,.more3{
 	font-family:Verdana, Arial, sans-serif;
 	float: left;	
 	text-decoration: underline;
-	margin-left: -32px;
-	line-height: 14px;
 }
 .navigation {
 	padding-top:20px;
@@ -860,11 +843,10 @@ a.more2,.more3{
 }
 
 .kc_item,.more3{
-	line-height: 24px;
+	line-height: 30px;
 	width:73%;
 	margin-left:32px;
 	float:left;
-	font-size:14px;
 }
 .kc_item a{
 	margin:0 10px;
@@ -873,24 +855,11 @@ a.more2,.more3{
 .tbd{
 	margin:0 10px;
 }
-.hentry{
-	padding: 0 15px;
-	margin-top:20px;
-	min-height: 150px;
-	height:auto !important; 
-	height:150px; 
-	overflow:visible;
-}
-.entry-content h4{
-	text-align:center;
-	font-weight:700;	
-	font-family: simhei,sans-serif;
+..hentry{
+	padding: 0 0 10px;
 }
 .kc {
     min-height: 170px;
-	 height:auto !important; 
-	height:170px; 
-	overflow:visible;
 	 border-bottom: 1px dotted #B3B3B3;
 }
 .kc-thumb{
@@ -936,20 +905,19 @@ a.more2,.more3{
 .yendifplayer .yf-skin .yf-controls{z-index:0;}
 #ims-thumbs .thumbs li img {margin-left: 6px;}
 .wp-pagenavi span.extend{border:0;}
-.booklist li{list-style:none;font-size:14px;}
+.booklist li{list-style:none;}
 .ab_item {height:30px;}
-.ab_item p,.kc_item > p {width:200px;float:left;text-indent:0;line-height: 24px;
-    margin-bottom: 0;}
+.ab_item p,.kc_item > p {width:200px;float:left;}
 .ab_item a{margin:0 15px;}
 .img-name{
 	font-size: 14px;
-	line-height: 24px;
+	line-height: 18px;
 }
 .booklink a{
 	margin-right:14px;
 	color: #BA6D1F;
 	text-decoration:underline;
-	font-size:14px;	
+	font-size:12px;	
 }
 .books li{
 	list-style: none;
@@ -957,9 +925,6 @@ a.more2,.more3{
 }
 .bk_item {
 	min-height: 120px;
-	height:auto !important; 
-	height:120px; 
-	overflow:visible;
 }
 .bk_item img{
 	float: left;
@@ -987,13 +952,4 @@ ul.books_nav{
 }
 #book-nav {
 	text-align: center;
-}
-.more3 {
-    margin-top: 10px;
-}
-.kc .entry-title{
-	margin-bottom:0px;
-}
-.aside {
-	font-size:14px;
 }

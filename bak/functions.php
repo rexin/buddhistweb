@@ -321,8 +321,6 @@ $img_a['383']= get_field('img-right-1a','13110');
 $img_b['383']= get_field('img-right-1b','13110');
 $img_a['66']= get_field('img-right-2a','13110');
 $img_b['66']= get_field('img-right-2b','13110');
-$img_a['354']= get_field('img-right-2a','13110');
-$img_b['354']= get_field('img-right-2b','13110');
 $img_a['384']= get_field('img-right-3a','13110');
 $img_b['384']= get_field('img-right-3b','13110');
 $img_a['96']= get_field('img-right-4a','13110');
@@ -442,7 +440,7 @@ return $this_category->term_id;
 
 //excerpt_length 
 function new_excerpt_length($length) {
-    return 118;
+    return 130;
 }
 add_filter('excerpt_length', 'new_excerpt_length');
 
@@ -451,7 +449,7 @@ function new_excerpt_more($more) {
 	$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
 	$root_id = get_category_root_id($cat);	
     global $post;    
-    return '……</p><p><a class="more2 more_'.$root_id.'" href="'.get_permalink($post->ID). '"> >MORE</a>';
+    return '</p><p><a class="more2 more_'.$root_id.'" href="'.get_permalink($post->ID). '"> >MORE</a>';
 }
 
 add_filter('excerpt_more', 'new_excerpt_more');
@@ -490,8 +488,7 @@ function childtheme_override_postheader_posttitle(){
 		$cat = (get_query_var('cat')) ? get_query_var('cat') : 1;
 		$root_id = get_category_root_id($cat);
 		$ca = get_category($cat);
-		$parent_id = $ca->category_parent;	
-		$post_cat = get_the_category(get_the_ID());			
+		$parent_id = $ca->category_parent;		
 		if ( !$title_content = get_the_title() )  
 			$title_content = '<a href="' . get_permalink() . '">' . _x('(Untitled)', 'Default title for untitled posts', 'thematic') . '</a>';
 	    if($root_id =='411'){		
@@ -522,14 +519,6 @@ function childtheme_override_postheader_posttitle(){
 			}
 		} elseif($parent_id =='342'||$cat=="342"){
 			$posttitle = "";
-		} elseif(isset($post_cat[0]) && $post_cat[0]->cat_ID =='416'){
-			$posttitle = '<h2 class="entry-title">';
-			 $posttitle .= sprintf('<a href="%s" title="%s" rel="bookmark">%s</a>',
-	        						'/?p='.get_field('gallery_id'),
-									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
-	        						$title_content
-	        						);   
-	        $posttitle .= "</h2>\n";
 		} elseif (is_single() || is_page()) {
 	        $posttitle .= '<h1 class="entry-title singel-title">' . $title_content . "</h1>\n";
 	    } elseif (is_404()) {    
@@ -583,7 +572,7 @@ function childtheme_override_content(){
 			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_substr($rs[1],0,16).'</a></span></div>';
 			}
 			}	
-		}elseif($cat=="386"||$cat=="416"){
+		}elseif($cat=="386"){
 			$post = "";		
 		}elseif($parent_id=="388"||$cat=="388"){
 			$post = get_the_content( thematic_more_text() );					
@@ -593,10 +582,10 @@ function childtheme_override_content(){
 			$i=1;
 			foreach ($yt as $key => $item){
 			$rs= explode("|", trim($item));
-			$play= "javascript:showplayer('play".get_the_ID().$i."');";
+			$play= "javascript:showplayer('play".$i."');";
 			$post = $post.'<li class="ab_item"><p>'.trim($rs[0]).'</p><a title="'.trim($rs[0]).'" href="'.trim($rs[1]).'">下载</a><a href="'.$play.'">播放</a>
 			</li>
-			<li id="play'.get_the_ID().$i.'" name="player" style="width:300px;display:none;">
+			<li id="play'.$i.'" name="player" style="width:300px;display:none;">
 			
 			'.trim($rs[1]).'
 			
@@ -612,10 +601,10 @@ function childtheme_override_content(){
 			$str = explode("\n", $post);			
 			$post = "";
 			if(!is_single()){
-			for ($i= 0;$i< 4; $i++){
+			for ($i= 0;$i< 3; $i++){
 				$rss =explode("|", $str[$i]);
 				if($rss[1]!=""){
-				$play= "javascript:showplayer('play".get_the_ID().$i."');";
+				$play= "javascript:showplayer('play".$i."');";
 				$audio = '<a href="'.$play.'">音频</a>|<a href="'.$rss[1].'">下载</a>';				
 				}else{
 				$audio = '<span class="tbd">音频</span>';
@@ -638,7 +627,7 @@ function childtheme_override_content(){
 				
 					$post = $post.'<div class="kc_item"><span>'.$rss[0].'</span>'.$audio.'|'.$video.'|'.$srt.'|'.$doc.'</div>';
 					if(isset($rss[1])){					
-					$post = $post.'<div class="kc_item" id="play'.get_the_ID().$i.'" name="player" style="width:300px;display:none;">
+					$post = $post.'<div class="kc_item" id="play'.$i.'" name="player" style="width:300px;display:none;">
 					
 					'.trim($rss[1]).'
 					
@@ -654,7 +643,7 @@ function childtheme_override_content(){
 				foreach ($str as $key => $result){			
 				$rss =explode("|", $result);					
 				if($rss[1]!=""){
-				$play= "javascript:showplayer('play".get_the_ID().$i."');";
+				$play= "javascript:showplayer('play".$i."');";
 				$audio = '<a href="'.$play.'">音频</a>|<a href="'.$rss[1].'">下载</a>';			
 				}else{
 				$audio = '<span class="tbd">音频</span>';
@@ -677,7 +666,7 @@ function childtheme_override_content(){
 				
 				$post = $post.'<div class="kc_item"><span>'.$rss[0].'</span>'.$audio.'|'.$video.'|'.$srt.'|'.$doc.'</div>';
 				if(isset($rss[1])){					
-					$post = $post.'<div class="kc_item" id="play'.get_the_ID().$i.'" name="player" style="width:300px;display:none;">
+					$post = $post.'<div class="kc_item" id="play'.$i.'" name="player" style="width:300px;display:none;">
 					
 					'.trim($rss[1]).'
 					
@@ -699,27 +688,8 @@ function childtheme_override_content(){
 			$post = apply_filters('the_content', $post);
 			$post = str_replace(']]>', ']]&gt;', $post);
 		} elseif ( strtolower($thematic_content_length) == 'excerpt') {
-			$post_cat = get_the_category(get_the_ID());			
 			$post = '';
-			if($post_cat[0]->cat_ID == "416"){
-			if(get_field('gallery_id')){
-			$postid = get_field('gallery_id');
-			$path = "/wp-content".get_post_meta( $postid, '_ims_folder_path', true)."/_resized/";
-			$dir = opendir(".".$path);
-			$i = 0;
-			while (($file = readdir($dir)) !== false){
-			  if(strstr($file,"100x100")){
-			  echo '<a href="/?p='.$postid.'"><img src="'.$path.$file.'"> ';
-			  $i++;
-			  }
-			  if($i == 5) break;
-			}
-			closedir($dir);
-			}
-			}else{
 			$post .= get_the_excerpt();
-			$post = trim($post);
-			$post = str_replace(" ","",$post);
 			$post = apply_filters('the_excerpt',$post);
 			if ( apply_filters( 'thematic_post_thumbs', TRUE) ) {
 				$post_title = get_the_title();
@@ -731,7 +701,6 @@ function childtheme_override_content(){
 									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
 									get_the_post_thumbnail(get_the_ID(), $size, $attr)) . $post;
 					}				
-			}
 			}
 		} elseif ( strtolower($thematic_content_length) == 'none') {
 			$post= '';		

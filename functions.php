@@ -346,7 +346,7 @@ $img_b['386']= get_field('img-right-9b','13110');
 	<div class="right_ps1">		
 		<img class="s_right1" src="<?php print_r($img_a[$root_id]);?>"> 
 		<?php 
-		if ($root_id =='383'){
+		if ($root_id =='383'||is_month()){
 		the_field('right_txt_1a','13121');		
 		}else{?>
 		<h2>最新更新╱<span>UPDATE</span></h2>
@@ -587,8 +587,7 @@ function childtheme_override_content(){
 			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_substr($rs[1],0,16).'</a></span></div>';
 			}
 			}	
-		}elseif($cat=="386"){			
-			//query_posts( 'cat=386&posts_per_page=15' );
+		}elseif($cat=="386"||is_month()){			
 			$post = "";
 			$post_cat = get_the_category(get_the_ID());
 			$cat_id = $post_cat[0]->cat_ID;
@@ -609,13 +608,13 @@ function childtheme_override_content(){
 			}
 			}else{
 			$post = get_the_content( thematic_more_text() );
-			$set = array("349","424","425","426","427","428","429");
-			if(in_array($cat_id,$set)){
+			//$set = array("349","424","425","426","427","428","429","418","419","");
+			if($cat_id=='349'||($cat_id > '418' && $cat_id < '430')){
 			$list = explode("\n", $post);
 			$post = "内容包括：";
 			foreach ($list as $key => $item){
 			$rs= explode("|", trim($item));
-			if($cat_id=='349'){
+			if($cat_id=='349'||($cat_id > '418' && $cat_id < '424')){
 			$rss = $rs[0];
 			}else{
 			$rss = $rs[1];
@@ -637,6 +636,24 @@ function childtheme_override_content(){
 			}else{
 			$post = $post.trim($rs[0])."。";
 			}
+			}			
+			}else{
+			$post_cat = get_the_category(get_the_ID());			
+			$post = '';
+			$post .= get_the_excerpt();
+			$post = trim($post);
+			$post = str_replace(" ","",$post);
+			$post = apply_filters('the_excerpt',$post);
+			if ( apply_filters( 'thematic_post_thumbs', TRUE) ) {
+				$post_title = get_the_title();
+				$size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
+				$attr = apply_filters( 'thematic_post_thumb_attr', array('title'	=> sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ) ) );
+				if ( has_post_thumbnail() ) {
+					$post = sprintf('<a class="entry-thumb" href="%s" title="%s">%s</a>',
+									get_permalink() ,
+									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
+									get_the_post_thumbnail(get_the_ID(), $size, $attr)) . $post;
+					}				
 			}			
 			}
 			//$post = mb_substr($post,0,150);

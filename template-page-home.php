@@ -24,19 +24,19 @@
 		<div id="left2">
 		<div class="left_s3"><table id="table1">
 			  <tr>
-				<td><a href="/category/asso/gjxh/">国际佛学会</a></td>
-				<td><a href="/category/asso/oceania/">大洋洲分会</a></td>
+				<td><a href="/archives/category/asso/gjxh/">国际佛学会</a></td>
+				<td><a href="/archives//category/asso/oceania/">大洋洲分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="/category/asso/ca-branch/">加拿大分会</a></td>
-				<td><a href="/category/asso/hk-taiwan/">港台分会</a></td>
+				<td><a href="/archives/category/asso/canada">加拿大分会</a></td>
+				<td><a href="/archives/category/asso/hk-taiwan/">港台分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="/category/asso/eur-branch/">欧洲分会</a></td>
-				<td><a href="/category/asso/other-branch/">其他分会</a></td>
+				<td><a href="/archives/category/asso/europe/">欧洲分会</a></td>
+				<td><a href="/archives/category/asso/other-branch/">其他分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="/category/asso/us-branch/">美国分会</a></td>
+				<td><a href="/archives/category/asso/america/">美国分会</a></td>
 				<td> </td>
 			  </tr>
 		</table></div>
@@ -83,12 +83,12 @@
 		<div class="pic">
 			<ul>
 				 
-				<li mid="0 "><a href="<?php echo $img_s1['alt'];?>" title="" alt=""><img src="<?php echo $img_s1['url'];?>" title="" alt="" /></a></li>
+				<li mid="0 "><a href="<?php the_field('p1_t4',13099);?>" title="" alt=""><img src="<?php echo $img_s1['url'];?>" title="" alt="" /></a></li>
 				 
-				<li mid="1 "><a href="#" title="" alt=""><img src="<?php echo $img_s2['url'];?>" title="" alt="" /></a></li>
+				<li mid="1 "><a href="<?php the_field('p2_t4',13099);?>" title="" alt=""><img src="<?php echo $img_s2['url'];?>" title="" alt="" /></a></li>
 				 
-				<li mid="2 "><a href="#" title="" alt=""><img src="<?php echo $img_s3['url'];?>" title="" alt="" /></a></li>
-				<li mid="3 "><a href="#" title="" alt=""><img src="<?php echo $img_s4['url'];?>" title="" alt="" /></a></li>
+				<li mid="2 "><a href="<?php the_field('p3_t4',13099);?>" title="" alt=""><img src="<?php echo $img_s3['url'];?>" title="" alt="" /></a></li>
+				<li mid="3 "><a href="<?php the_field('p4_t4',13099);?>" title="" alt=""><img src="<?php echo $img_s4['url'];?>" title="" alt="" /></a></li>
 			
 				 
 			</ul>

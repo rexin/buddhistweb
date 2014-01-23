@@ -202,7 +202,7 @@ a:hover {
 .menu-item-13050 ul.sub-menu,.cat_383,.cat_383 .wp-pagenavi span.current {
 	 background:#012348;
 }
-.menu-item-13046 ul.sub-menu,.cat_354,.cat_66,.cat_66 .wp-pagenavi span.current {
+.menu-item-13046 ul.sub-menu,.cat_354,.cat_354 .wp-pagenavi span.current,.cat_66,.cat_66 .wp-pagenavi span.current {
 	 background:#B28146;
 }
 .menu-item-13063 ul.sub-menu,.cat_384,.cat_384 .wp-pagenavi span.current {
@@ -455,7 +455,7 @@ a:hover {
 }
 #mp-2 a{
 	color:#b23908;
-	padding-right:18px; 
+	padding-right:10px; 
 }
 #mp-2 a:hover{
 	color:#ffffff;

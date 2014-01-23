@@ -270,11 +270,11 @@ function sidebar_left() { ?>
 			<?php endwhile;  wp_reset_postdata();
 			}elseif(!is_month()){		
 			if($root_id=="386"){
-			wp_list_categories("child_of=$root_id&title_li=&hide_empty=1&depth=2");
+			wp_list_categories("child_of=$root_id&exclude=416&title_li=&hide_empty=1&depth=2");
 			?>
 			
 				<li class="cat-item">
-				<a title="查看图库" href="/albums/gallery/">图库</a>
+				<a title="查看图库" href="/archives/albums/gallery/">图库</a>
 				<ul class="children">
 				<li class="cat-item">
 				<a href="/albums/%e8%af%b8%e4%bd%9b%e8%8f%a9%e8%90%a8/">诸佛菩萨</a>
@@ -350,9 +350,13 @@ $img_b['386']= get_field('img-right-9b','13110');
 		the_field('right_txt_1a','13121');		
 		}else{?>
 		<h2>最新更新╱<span>UPDATE</span></h2>
-		<ul><?php		
-		$recentPosts = new WP_Query();
-		$recentPosts->query("cat=$root_id&showposts=5");
+		<ul><?php
+		$args = array(
+		'post_type' => 'post',
+		'posts_per_page' => '5',
+		'cat' => $root_id
+		);
+		$recentPosts = new WP_Query($args);    
 		while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
 			<li><a href="<?php the_permalink() ?>" title="<?php the_title();?>" rel="bookmark"><?php echo mb_strimwidth(get_the_title(), 0, 21, "…"); ?></a></li>
 		<?php endwhile;  wp_reset_postdata();
@@ -583,8 +587,61 @@ function childtheme_override_content(){
 			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_substr($rs[1],0,16).'</a></span></div>';
 			}
 			}	
-		}elseif($cat=="386"||$cat=="416"){
-			$post = "";		
+		}elseif($cat=="386"){			
+			//query_posts( 'cat=386&posts_per_page=15' );
+			$post = "";
+			$post_cat = get_the_category(get_the_ID());
+			$cat_id = $post_cat[0]->cat_ID;
+			if( $cat_id == "416"){			
+			if(get_field('gallery_id')){
+			$postid = get_field('gallery_id');			
+			$path = "/wp-content".get_post_meta( $postid, '_ims_folder_path', true)."/_resized/";
+			$dir = opendir(".".$path);
+			$i = 0;
+			while (($file = readdir($dir)) !== false){
+			  if(strstr($file,"100x100")){
+			  $post = $post.'<a href="/?p='.$postid.'"><img src="'.$path.$file.'"> ';
+			  $i++;
+			  }
+			  if($i == 5) break;
+			}
+			closedir($dir);
+			}
+			}else{
+			$post = get_the_content( thematic_more_text() );
+			$set = array("349","424","425","426","427","428","429");
+			if(in_array($cat_id,$set)){
+			$list = explode("\n", $post);
+			$post = "内容包括：";
+			foreach ($list as $key => $item){
+			$rs= explode("|", trim($item));
+			if($cat_id=='349'){
+			$rss = $rs[0];
+			}else{
+			$rss = $rs[1];
+			}
+			if($item!=end($list)){
+			$post = $post.trim($rss)."，";
+			}else{
+			$post = $post.trim($rss)."。";
+			}
+			}			
+			}elseif($cat_id == "431"){
+			$list = explode(",", $post);
+			$post = "内容包括：";
+			foreach ($list as $key => $item){
+			$rs= explode("@", trim($item));
+			$rs[0]= str_replace('[mp3-jplayer tracks="','',$rs[0]);
+			if($item!=end($list)){
+			$post = $post.trim($rs[0])."，";
+			}else{
+			$post = $post.trim($rs[0])."。";
+			}
+			}			
+			}
+			//$post = mb_substr($post,0,150);
+			}
+			
 		}elseif($parent_id=="388"||$cat=="388"){
 			$post = get_the_content( thematic_more_text() );					
 			$yt = explode("\n", $post);
@@ -698,25 +755,14 @@ function childtheme_override_content(){
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
 			$post = str_replace(']]>', ']]&gt;', $post);
+			if(is_single()&&get_field('gallery_id')){
+			$gid = get_field('gallery_id');
+			header("Location:/?p=$gid");			
+			}
+			
 		} elseif ( strtolower($thematic_content_length) == 'excerpt') {
 			$post_cat = get_the_category(get_the_ID());			
 			$post = '';
-			if($post_cat[0]->cat_ID == "416"){
-			if(get_field('gallery_id')){
-			$postid = get_field('gallery_id');
-			$path = "/wp-content".get_post_meta( $postid, '_ims_folder_path', true)."/_resized/";
-			$dir = opendir(".".$path);
-			$i = 0;
-			while (($file = readdir($dir)) !== false){
-			  if(strstr($file,"100x100")){
-			  echo '<a href="/?p='.$postid.'"><img src="'.$path.$file.'"> ';
-			  $i++;
-			  }
-			  if($i == 5) break;
-			}
-			closedir($dir);
-			}
-			}else{
 			$post .= get_the_excerpt();
 			$post = trim($post);
 			$post = str_replace(" ","",$post);
@@ -731,14 +777,14 @@ function childtheme_override_content(){
 									sprintf( esc_attr__('Permalink to %s', 'thematic'), the_title_attribute( 'echo=0' ) ),
 									get_the_post_thumbnail(get_the_ID(), $size, $attr)) . $post;
 					}				
-			}
-			}
+			}			
 		} elseif ( strtolower($thematic_content_length) == 'none') {
 			$post= '';		
 		} else {	
 			$post = get_the_content( thematic_more_text() );
 			$post = apply_filters('the_content', $post);
 			$post = str_replace(']]>', ']]&gt;', $post);
+			
 		}
 		echo apply_filters('thematic_post', $post);
 	} 
@@ -755,7 +801,7 @@ function kcplayer(){
 		$parent_id = $ca->category_parent;			
 		if($root_id =='417'|| $parent_id =="342" || $cat=="342"||$cat=="298"){
 			if(is_single()){$single = ' style="margin:10px 310px;"';}else {$single = "";}
-			echo '<div class="kc_player"'.$single.'><iframe id="ytplayer" name="kcplayer" type="text/html" width="600" height="366" src="http://test.buddhistweb.org/wp-content/uploads/2014/01/player.htm" frameborder="0" allowfullscreen scrolling="no"></iframe></div>';
+			echo '<div class="kc_player"'.$single.'><iframe id="ytplayer" name="kcplayer" type="text/html" width="600" height="366" src="/wp-content/uploads/2014/01/player.htm" frameborder="0" allowfullscreen scrolling="no"></iframe></div>';
 		}
 		if($parent_id="388"||$cat="388"||$root_id =='417'){
 			echo '<script language="javascript">

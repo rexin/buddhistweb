@@ -379,7 +379,7 @@ $img_b['386']= get_field('img-right-9b','13110');
 		the_field('right_txt_1b','13121');	
 		}elseif($sticky_sum == 1){?>		
 		<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-		<p><?php echo mb_substr(get_the_excerpt(),0,64)."..."; ?></p>
+		<p><?php echo mb_strimwidth(get_the_excerpt(),0,64)."..."; ?></p>
 		<div class="more sticky"><a href="<?php echo the_permalink() ?>">MORE</a></div>
 		<?php 
 		}elseif($sticky_sum >1){ ?>		
@@ -446,7 +446,7 @@ return $this_category->term_id;
 
 //excerpt_length 
 function new_excerpt_length($length) {
-    return 118;
+    return 120;
 }
 add_filter('excerpt_length', 'new_excerpt_length');
 
@@ -575,7 +575,7 @@ function childtheme_override_content(){
 			if($cat=="298"&&!is_single()&&count($yt)>8){
 			for ($i= 0;$i< 8; $i++){
 			$rs= explode("|", $yt[$i]);
-			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_substr($rs[1],0,16).'</a></span></div>';
+			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_strimwidth($rs[1],0,16).'</a></span></div>';
 			}
 			$post = $post.sprintf('<div class="more2 more_'.$root_id.'"><a href="%s" title="%s" rel="bookmark">>MORE</a></div>',
 	        						apply_filters('the_permalink', get_permalink()),
@@ -641,6 +641,7 @@ function childtheme_override_content(){
 			$post_cat = get_the_category(get_the_ID());			
 			$post = '';
 			$post .= get_the_excerpt();
+			//$post = mb_strimwidth($post,0,126);
 			$post = trim($post);
 			$post = str_replace(" ","",$post);
 			$post = apply_filters('the_excerpt',$post);
@@ -781,6 +782,7 @@ function childtheme_override_content(){
 			$post_cat = get_the_category(get_the_ID());			
 			$post = '';
 			$post .= get_the_excerpt();
+			//$post = mb_strimwidth($post,0,150);
 			$post = trim($post);
 			$post = str_replace(" ","",$post);
 			$post = apply_filters('the_excerpt',$post);

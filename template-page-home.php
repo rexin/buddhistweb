@@ -24,19 +24,19 @@
 		<div id="left2">
 		<div class="left_s3"><table id="table1">
 			  <tr>
-				<td><a href="/archives/category/asso/gjxh/">国际佛学会</a></td>
-				<td><a href="/archives//category/asso/oceania/">大洋洲分会</a></td>
+				<td><a href="/category/asso/gjxh/">国际佛学会</a></td>
+				<td><a href="/category/asso/oceania/">大洋洲分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="/archives/category/asso/canada">加拿大分会</a></td>
-				<td><a href="/archives/category/asso/hk-taiwan/">港台分会</a></td>
+				<td><a href="/category/asso/canada">加拿大分会</a></td>
+				<td><a href="/category/asso/hk-taiwan/">港台分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="/archives/category/asso/europe/">欧洲分会</a></td>
-				<td><a href="/archives/category/asso/other-branch/">其他分会</a></td>
+				<td><a href="/category/asso/europe/">欧洲分会</a></td>
+				<td><a href="/category/asso/other-branch/">其他分会</a></td>
 			  </tr>
 			  <tr>
-				<td><a href="/archives/category/asso/america/">美国分会</a></td>
+				<td><a href="/category/asso/america/">美国分会</a></td>
 				<td> </td>
 			  </tr>
 		</table></div>
@@ -57,7 +57,26 @@
 		</div>
 		<div class='line4'><div class='line5'></div></div>
 		</div>
+		<?php
+		$slide_cat = array('66','231','354','386');		
+		foreach ($slide_cat as $scat){
+		$recentPosts = new WP_Query();
+		$args = "cat=".$scat."&showposts=1";
+		$recentPosts->query($args);		
+		while ($recentPosts->have_posts()) : $recentPosts->the_post(); 
+    	$category = get_the_category(); 
+		$t1 = $category[0]->cat_name;
+		$t5 = get_the_title();
+		$t2 = mb_strimwidth($t5, 0, 24);
+		$t3 = date('F j,Y',get_the_time('U'));
+		$t4 = get_permalink();
+		endwhile;  wp_reset_postdata();
+		$piclink[] = $t4; 
+		$slide[] = sprintf('<h1>%s</h1><h2><a href="%s" title="%s" alt="">%s</a></h2><p>%s</p>',$t1,$t4,$t5,$t2,$t3);		
+		}
 		
+		
+		?>		
 	
 		<div id="container_home">
 		<?php 
@@ -65,6 +84,7 @@
 		$img_s2 = get_field('slider2',13099);
 		$img_s3 = get_field('slider3',13099);
 		$img_s4 = get_field('slider4',13099);
+		
 		?>
 		<div id="slider">
 		<div class="hdp">
@@ -72,10 +92,10 @@
 		<div class="pic_link">
 			<ul>
 			     
-				    <li mid="0"  class="xz"  ><div class="slider_tri s1"><span class="s_tri">▼</span></div><div class="s1 s_desp s_d1"><h1><?php the_field('p1_t1',13099);?></h1><h2><a href="<?php the_field('p1_t4',13099);?>" title="" alt=""><?php the_field('p1_t2',13099);?></a></h2><p><?php the_field('p1_t3',13099);?></p></div></li>			     
-				    <li mid="1" ><div class="slider_tri s2"><span class="s_tri">▼</span></div><div class="s2 s_desp"><h1><?php the_field('p2_t1',13099);?></h1><h2><a href="<?php the_field('p2_t4',13099);?>" title="" alt=""><?php the_field('p2_t2',13099);?></a></h2><p><?php the_field('p2_t3',13099);?></p></div></li>			     
-				    <li mid="2" ><div class="slider_tri s3"><span class="s_tri">▼</span></div><div class="s3 s_desp"><h1><?php the_field('p3_t1',13099);?></h1><h2><a href="<?php the_field('p3_t4',13099);?>" title="" alt=""><?php the_field('p3_t2',13099);?></a></h2><p><?php the_field('p3_t3',13099);?></p></div></li>
-					<li mid="3 " ><div class="slider_tri s4"><span class="s_tri">▼</span></div><div class="s4 s_desp"><h1><?php the_field('p4_t1',13099);?></h1><h2><a href="<?php the_field('p4_t4',13099);?>" title="" alt=""><?php the_field('p4_t2',13099);?></a></h2><p><?php the_field('p4_t3',13099);?></p></div></li>
+				    <li mid="0"  class="xz"  ><div class="slider_tri s1"><span class="s_tri">▼</span></div><div class="s1 s_desp s_d1"><?php echo $slide[0];?></div></li>			     
+				    <li mid="1" ><div class="slider_tri s2"><span class="s_tri">▼</span></div><div class="s2 s_desp"><?php echo $slide[1];?></div></li>			     
+				    <li mid="2" ><div class="slider_tri s3"><span class="s_tri">▼</span></div><div class="s3 s_desp"><?php echo $slide[2];?></div></li>
+					<li mid="3 " ><div class="slider_tri s4"><span class="s_tri">▼</span></div><div class="s4 s_desp"><?php echo $slide[3];?></div></li>
 			     
 			</ul>
 		</div>
@@ -83,12 +103,12 @@
 		<div class="pic">
 			<ul>
 				 
-				<li mid="0 "><a href="<?php the_field('p1_t4',13099);?>" title="" alt=""><img src="<?php echo $img_s1['url'];?>" title="" alt="" /></a></li>
+				<li mid="0 "><a href="<?php echo $piclink[0]?>" title="" alt=""><img src="<?php echo $img_s1['url'];?>" title="" alt="" /></a></li>
 				 
-				<li mid="1 "><a href="<?php the_field('p2_t4',13099);?>" title="" alt=""><img src="<?php echo $img_s2['url'];?>" title="" alt="" /></a></li>
+				<li mid="1 "><a href="<?php echo $piclink[1]?>" title="" alt=""><img src="<?php echo $img_s2['url'];?>" title="" alt="" /></a></li>
 				 
-				<li mid="2 "><a href="<?php the_field('p3_t4',13099);?>" title="" alt=""><img src="<?php echo $img_s3['url'];?>" title="" alt="" /></a></li>
-				<li mid="3 "><a href="<?php the_field('p4_t4',13099);?>" title="" alt=""><img src="<?php echo $img_s4['url'];?>" title="" alt="" /></a></li>
+				<li mid="2 "><a href="<?php echo $piclink[2]?>" title="" alt=""><img src="<?php echo $img_s3['url'];?>" title="" alt="" /></a></li>
+				<li mid="3 "><a href="<?php echo $piclink[3]?>" title="" alt=""><img src="<?php echo $img_s4['url'];?>" title="" alt="" /></a></li>
 			
 				 
 			</ul>

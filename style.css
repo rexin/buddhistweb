@@ -965,7 +965,9 @@ a.more2,.more3{
 	float: left;
 	margin-right:26px;
 	margin-top: 6px;
-	padding-bottom:30px;  
+	padding-bottom:30px; 
+	width:90px;
+	height:119px; 
 }
 .bk_item p{
 	font-size:14px;
@@ -996,4 +998,12 @@ ul.books_nav{
 }
 .aside {
 	font-size:14px;
+}
+
+#post-4098 {
+    width: 570px;
+}
+
+.books {
+    padding: 0 16px;
 }

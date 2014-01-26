@@ -274,7 +274,7 @@ function sidebar_left() { ?>
 			?>
 			
 				<li class="cat-item">
-				<a title="查看图库" href="/archives/albums/gallery/">图库</a>
+				<a title="查看图库" href="/albums/gallery/">图库</a>
 				<ul class="children">
 				<li class="cat-item">
 				<a href="/albums/%e8%af%b8%e4%bd%9b%e8%8f%a9%e8%90%a8/">诸佛菩萨</a>
@@ -303,7 +303,7 @@ function sidebar_left() { ?>
 			}
 			
 			}elseif(is_month()){
-			wp_get_archives("type=monthly&format=html&show_post_count=true"); 
+			wp_get_archives("type=monthly&format=html&show_post_count=true&limit=12"); 
 			}
 			
 			?>

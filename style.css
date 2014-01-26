@@ -876,9 +876,8 @@ a.more2,.more3{
 .hentry{
 	padding: 0 15px;
 	margin-top:20px;
-	min-height: 150px;
-	height:auto !important; 
-	height:150px; 
+	min-height: 150px;	
+	height:150px\9; 
 	overflow:visible;
 }
 .entry-content h4{
@@ -914,7 +913,7 @@ a.more2,.more3{
 }
 
 .yt_item {
-    border-bottom: 1px dotted #CCCCCC;
+	 border-bottom: 1px dotted #cccccc;    
     float: left;
     height: 140px;
     padding-bottom: 20px;

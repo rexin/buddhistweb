@@ -228,12 +228,22 @@ function display_my_image() {
 // Use position 2 to place image between brandingopen and blogtitle
 add_action('thematic_header', 'display_my_image', 2);
 //藏历+搜索框
+//baidu
+/* <div id="search" style="margin-top:14px;"><form action="http://www.baidu.com/s" name="f1" onsubmit="return doSearch(this);" target="_blank"><input type="hidden" name="tn" value="baidulocal" /> <input type="hidden" name="si" value="www.buddhistweb.org" /> <input type="hidden" name="ct" value="2097152" /> <input style="border: 1px solid #cbcbcb; background: url('<?php echo get_stylesheet_directory_uri().'/images/s.gif'; ?>') no-repeat right; padding:3px 5px 5px 8px; color: #3a3a3c;font-size:12px" type="text" name="word" value="" size="40" /></form></div> */
+
 add_action('thematic_header','header_right_top');
 	function header_right_top(){ ?>
 	 <div id="circle"></div><div id="tri"></div>
 	 <div id="header_right_top">
 		<?php include "includes/tcalr.php";?>
-		<div id="search" style="margin-top:14px;"><form action="http://www.baidu.com/s" name="f1" onsubmit="return doSearch(this);" target="_blank"><input type="hidden" name="tn" value="baidulocal" /> <input type="hidden" name="si" value="www.buddhistweb.org" /> <input type="hidden" name="ct" value="2097152" /> <input style="border: 1px solid #cbcbcb; background: url('<?php echo get_stylesheet_directory_uri().'/images/s.gif'; ?>') no-repeat right; padding:3px 5px 5px 8px; color: #3a3a3c;font-size:12px" onclick="javascript:if(this.value=='搜 索')this.value=''" onfocus="cls(this);" onblur="res(this);" type="text" name="word" value="搜 索" size="40" /></form></div>
+		<div id="search" style="margin-top:14px;">
+		<form id="searchform" action="<?php home_url()?>" method="get">
+		<div>
+		<input id="s" type="text" tabindex="1" size="32" value="" name="s">
+		<input id="searchsubmit" type="submit" tabindex="2" value="" name="searchsubmit">
+		</div>
+		</form>
+		</div>		
 	</div>	
 	<?php }
 	
@@ -268,8 +278,9 @@ function sidebar_left() { ?>
 			while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
 				<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
 			<?php endwhile;  wp_reset_postdata();
-			}elseif(!is_month()){		
-			if($root_id=="386"){
+			}elseif(is_month()||is_search()){
+			wp_get_archives("type=monthly&format=html&show_post_count=true&limit=12"); 
+			}elseif($root_id=="386"){
 			wp_list_categories("child_of=$root_id&exclude=416&title_li=&hide_empty=1&depth=2");
 			?>
 			
@@ -302,9 +313,7 @@ function sidebar_left() { ?>
 			wp_list_categories("child_of=$root_id&title_li=&hide_empty=1&depth=1");
 			}
 			
-			}elseif(is_month()){
-			wp_get_archives("type=monthly&format=html&show_post_count=true&limit=12"); 
-			}
+			
 			
 			?>
 			</ul>
@@ -346,7 +355,7 @@ $img_b['386']= get_field('img-right-9b','13110');
 	<div class="right_ps1">		
 		<img class="s_right1" src="<?php print_r($img_a[$root_id]);?>"> 
 		<?php 
-		if ($root_id =='383'||is_month()){
+		if ($root_id =='383'||is_month()||is_search()){
 		the_field('right_txt_1a','13121');		
 		}else{?>
 		<h2>最新更新╱<span>UPDATE</span></h2>
@@ -386,7 +395,7 @@ $img_b['386']= get_field('img-right-9b','13110');
 		<h2>内容推荐╱<span>FEATURED</span></h2>
 		<ul>
 		<?php 
-		$the_query = new WP_Query(array('cat'=>$cat,'post__in'=>get_option('sticky_posts'),'posts_per_page'=>4,'ignore_sticky_posts' =>1));
+		$the_query = new WP_Query(array('cat'=>$cat,'post__in'=>get_option('sticky_posts'),'posts_per_page'=>6,'ignore_sticky_posts' =>1));
 		while($the_query->have_posts ()):$the_query->the_post();
 		?>		
 		<li><a href="<?php the_permalink() ?>" title="<?php the_title();?>" rel="bookmark"><?php echo mb_strimwidth(get_the_title(), 0, 21, "…"); ?></a></li>		
@@ -446,7 +455,7 @@ return $this_category->term_id;
 
 //excerpt_length 
 function new_excerpt_length($length) {
-    return 120;
+    return 116;
 }
 add_filter('excerpt_length', 'new_excerpt_length');
 
@@ -587,7 +596,7 @@ function childtheme_override_content(){
 			$post = $post.'<div class="yt_item"><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'"><img src="'.get_bloginfo('url').'/wp-content/uploads/yt_pic/'.trim($rs[0]).'.jpg"></a><span><a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.trim($rs[0]).'?autoplay=1" target="kcplayer" title="'.$rs[1].'">'.mb_substr($rs[1],0,16).'</a></span></div>';
 			}
 			}	
-		}elseif($cat=="386"||is_month()){			
+		}elseif($cat=="386"||is_month()||is_search()){			
 			$post = "";
 			$post_cat = get_the_category(get_the_ID());
 			$cat_id = $post_cat[0]->cat_ID;
@@ -609,7 +618,7 @@ function childtheme_override_content(){
 			}else{
 			$post = get_the_content( thematic_more_text() );
 			//$set = array("349","424","425","426","427","428","429","418","419","");
-			if($cat_id=='349'||($cat_id > '418' && $cat_id < '430')){
+			if($cat_id=='349'||$cat_id=='298'||($cat_id > '418' && $cat_id < '430')){
 			$list = explode("\n", $post);
 			$post = "内容包括：";
 			foreach ($list as $key => $item){
@@ -645,6 +654,7 @@ function childtheme_override_content(){
 			$post = trim($post);
 			$post = str_replace(" ","",$post);
 			$post = apply_filters('the_excerpt',$post);
+			if(!is_search()){
 			if ( apply_filters( 'thematic_post_thumbs', TRUE) ) {
 				$post_title = get_the_title();
 				$size = apply_filters( 'thematic_post_thumb_size' , array(100,100) );
@@ -656,6 +666,7 @@ function childtheme_override_content(){
 									get_the_post_thumbnail(get_the_ID(), $size, $attr)) . $post;
 					}				
 			}			
+			}
 			}
 			//$post = mb_substr($post,0,150);
 			}
@@ -696,22 +707,22 @@ function childtheme_override_content(){
 				$audio = '<span class="tbd">音频</span>';
 				}
 				if($rss[2]!=""){
-				$video = '<a href="https://www.youtube.com/embed/'.$rss[2].'?autoplay=1">视频</a>';
+				$video = '<a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.$rss[2].'?autoplay=1" target="kcplayer">视频</a>';
 				}else{
 				$video = '<span class="tbd">视频</span>';
 				}
 				if($rss[3]!=""){
-				$srt = '<a href="'.$rss[3].'">字幕</a>';
+				$srt = '|<a href="'.$rss[3].'">字幕</a>';
 				}else{
-				$srt = '<span class="tbd">字幕</span>';
+				$srt = '';
 				}
 				if($rss[4]!=""){
-				$doc = '<a href="'.$rss[4].'">文档</a>';
+				$doc = '|<a href="'.$rss[4].'">文档</a>';
 				}else{
-				$doc = '<span class="tbd">文档</span>';
+				$doc = '';
 				}
 				
-					$post = $post.'<div class="kc_item"><span>'.$rss[0].'</span>'.$audio.'|'.$video.'|'.$srt.'|'.$doc.'</div>';
+					$post = $post.'<div class="kc_item"><span>'.$rss[0].'</span>'.$audio.'|'.$video.$srt.$doc.'</div>';
 					if(isset($rss[1])){					
 					$post = $post.'<div class="kc_item" id="play'.get_the_ID().$i.'" name="player" style="width:300px;display:none;">
 					
@@ -735,7 +746,7 @@ function childtheme_override_content(){
 				$audio = '<span class="tbd">音频</span>';
 				}
 				if($rss[2]!=""){
-				$video = '<a href="https://www.youtube.com/embed/'.$rss[2].'?autoplay=1">视频</a>';
+				$video = '<a onclick="window.scrollTo(0,180)" href="https://www.youtube.com/embed/'.$rss[2].'?autoplay=1" target="kcplayer">视频</a>';
 				}else{
 				$video = '<span class="tbd">视频</span>';
 				}
@@ -750,7 +761,7 @@ function childtheme_override_content(){
 				$doc = '<span class="tbd">文档</span>';
 				}
 				
-				$post = $post.'<div class="kc_item"><span>'.$rss[0].'</span>'.$audio.'|'.$video.'|'.$srt.'|'.$doc.'</div>';
+				$post = $post.'<div class="kc_item"><span>'.mb_strimwidth($rss[0],0,32,'...').'</span>'.$audio.'|'.$video.'|'.$srt.'|'.$doc.'</div>';
 				if(isset($rss[1])){					
 					$post = $post.'<div class="kc_item" id="play'.get_the_ID().$i.'" name="player" style="width:300px;display:none;">
 					
@@ -778,7 +789,15 @@ function childtheme_override_content(){
 			header("Location:/?p=$gid");			
 			}
 			
-		} elseif ( strtolower($thematic_content_length) == 'excerpt') {
+		}elseif($root_id =='354'){
+			$post_cat = get_the_category(get_the_ID());			
+			$post = '';
+			$post .= get_the_excerpt();			
+			$post = trim($post);
+			$post = str_replace(" ","",$post);
+			$post = apply_filters('the_excerpt',$post);			
+						
+		}elseif ( strtolower($thematic_content_length) == 'excerpt') {
 			$post_cat = get_the_category(get_the_ID());			
 			$post = '';
 			$post .= get_the_excerpt();
@@ -955,3 +974,18 @@ function  childtheme_override_category_loop(){
 		}
 
 }
+add_action('wp_head', 'baidu_tongji');
+function baidu_tongji(){?>
+<link rel="shortcut icon" href="/favicon.ico" />
+<!-- baidu -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c8dd1efec81d0533f9ae846157bdded2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- baidu -->
+<?}

@@ -559,7 +559,7 @@ a:hover {
 	font-size:14px;	
 }
 .more a{
-	background: #B54315 url(images/a2.gif) no-repeat 4px center;
+	background: url(images/a2.gif) no-repeat 4px 4px;
 	font-family:"Droid Sans";
 	color:#ffffff;
 	line-height: 14px;
@@ -569,6 +569,10 @@ a:hover {
 	width:27px;
 	float:right;		
 	vertical-align: middle;
+}
+#left3 .more a{
+	background: url(images/a3.gif) no-repeat 4px 4px;
+	color: #656565;
 }
 .line4{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #A9A9A9;border-bottom:1px dotted #A9A9A9;height:1px;}
 .line5{display:inline-block;width:100%;margin:0 -1px;border-top:1px dotted #AEAEAE;border-bottom:1px dotted #AEAEAE;height:1px;}
@@ -735,7 +739,8 @@ a:hover {
 }
 .right_ps1{
 	background:#555555;
-	height: 445px;
+	height: auto;
+	padding-bottom:50px;
 	margin-bottom:10px;	
 }
 .right_ps1 img,right_ps2 img{
@@ -749,7 +754,8 @@ a:hover {
 }
 .right_ps2{
 	background:#7e1222;
-	height: 359px;
+	height: auto;
+	padding-bottom:15px;
 }
 #sidebar-ps1 li{	
 	font-size:14px;
@@ -789,6 +795,9 @@ a:hover {
 	margin-left:15px;
 }
 .right_ps1 li a,.right_ps2 li a{
+	color: #ffffff;
+}
+.list_s1 a{
 	background: url(images/a2.gif) no-repeat left center;
 	color: #ffffff;
 	padding-left:10px;
@@ -819,6 +828,7 @@ a.more2,.more3{
 	text-decoration: underline;
 	margin-left: -32px;
 	line-height: 14px;
+	margin-bottom:28px; 
 }
 .navigation {
 	padding-top:20px;
@@ -876,9 +886,7 @@ a.more2,.more3{
 .hentry{
 	padding: 0 15px;
 	margin-top:20px;
-	min-height: 150px;	
-	height:150px\9; 
-	overflow:visible;
+	margin-bottom:10px;
 }
 .entry-content h4{
 	text-align:center;
@@ -886,11 +894,8 @@ a.more2,.more3{
 	font-family: simhei,sans-serif;
 }
 .kc {
-    min-height: 170px;
-	 height:auto !important; 
-	height:170px; 
-	overflow:visible;
-	 border-bottom: 1px dotted #B3B3B3;
+  	height:170px; 	
+	border-bottom: 1px dotted #B3B3B3;
 }
 .kc-thumb{
 	width:120px;
@@ -906,6 +911,7 @@ a.more2,.more3{
 	width:120px;
 	text-align:center;
 	margin: 10px 4px;	
+	font-size:14px;
 }
 .kc_player{
 	margin: 0 auto;
@@ -1005,4 +1011,16 @@ ul.books_nav{
 
 .books {
     padding: 0 16px;
+}
+#searchform #searchsubmit {
+    background: url("images/s.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    height: 24px;
+    margin-left: -4px;
+    width: 24px;
+}
+#searchform #s {
+    border: 1px solid #CBCBCB;
+    height: 20px;
+    width: 200px;
 }

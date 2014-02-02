@@ -1015,9 +1015,13 @@ ul.books_nav{
 #searchform #searchsubmit {
     background: url("images/s.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     border: 0 none;
-    height: 24px;
-    margin-left: -4px;
+    height: 24px;	 
+    margin-left: -4px;	 
     width: 24px;
+}
+#searchform #searchsubmit{
+	height:25px\9;
+	margin-left: -5px\9;
 }
 #searchform #s {
     border: 1px solid #CBCBCB;

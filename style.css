@@ -123,16 +123,7 @@ a:hover {
 	left:499px;
 	z-index:-1;
 }
-#tri{width:0;height:0;  
-    line-height:0;  
-    border-width:6px;  
-    border-style:solid;  
-    border-color: #323232 transparent transparent transparent;
-	position:absolute;
-	top:75px;
-	left:506px;
-	z-index:0;
-	}
+
 /* =Menu
 -------------------------------------------------------------- */
 #access{
@@ -274,10 +265,10 @@ a:hover {
 	float:right;
 }
 #right2{
-	height: 417px;
-	background: #7e1222 url(images/right2_bg.png) no-repeat 18px 350px;
-	padding: 14px 12px 0px 12px;
-	color:#ffffff;
+background: url("images/right2_bg.png") no-repeat scroll 18px 386px #7E1222;
+    color: #FFFFFF;
+    height: 457px;
+    padding: 14px 12px 0;
 }
 #right2 a:link,#right2 a:visited,#right2 a:focus, #right2 a:active{
 	color:#ffffff;
@@ -408,6 +399,7 @@ a:hover {
 	float: left;	
 	border-bottom: 1px dotted #cccccc;
 	margin-top:5px; 
+	height: 223px;
 }
 
 .main_pos h1,.mp_content h4{
@@ -476,9 +468,9 @@ a:hover {
 	background: #000000;
 	margin-bottom:1px; 
 	padding:90px 23px 20px 23px; 
-}
+	}
 #left2{
-	height:212px;
+	height: 251px;
 	background: #B54315;
 	margin-bottom:10px; 
 	padding-top:20px;
@@ -700,7 +692,7 @@ a:hover {
 	height: 25px;
 	color:#ffffff;	
 	margin-bottom:30px;
-	padding-left:15px; 	
+	padding: 3px 15px;	
 }
 .breadcrumbs1{
 	margin: 0 210px;
@@ -1028,3 +1020,6 @@ ul.books_nav{
     height: 20px;
     width: 200px;
 }
+.tri {width: 0;height: 0;line-height: 0;font-size: 0;border-width: 8px;border-style: solid;width: 0;position: absolute;}
+.tri_up{border-color: transparent transparent #323232 transparent;z-index: 999;top: 64px;left: 504px;}
+.tri_down{border-color: #323232 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);z-index: 999;top: 10px;left: 504px;display:none;}

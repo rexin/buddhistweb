@@ -25,24 +25,28 @@
 		<div class="left_s3"><table id="table1">
 			  <tr>
 				<td><a href="/category/asso/gjxh/">国际佛学会</a></td>
-				<td><a href="/category/asso/oceania/">大洋洲分会</a></td>
-			  </tr>
-			  <tr>
 				<td><a href="/category/asso/canada">加拿大分会</a></td>
-				<td><a href="/category/asso/hk-taiwan/">港台分会</a></td>
-			  </tr>
-			  <tr>
-				<td><a href="/category/asso/europe/">欧洲分会</a></td>
-				<td><a href="/category/asso/other-branch/">其他分会</a></td>
+				
 			  </tr>
 			  <tr>
 				<td><a href="/category/asso/america/">美国分会</a></td>
-				<td> </td>
+				<td><a href="/category/asso/europe/">欧洲分会</a></td>
+				
+			  </tr>
+			  <tr>
+				<td><a href="/category/asso/hk-taiwan/">港台分会</a></td>
+				<td><a href="/category/asso/other-branch/">其他分会</a></td>
+			  </tr>
+			  <tr>
+				<td  colspan=2><a style="padding-left:10px;background: url('/wp-content/themes/bwo2014/images/a2.gif') no-repeat scroll 0px 9px rgba(0, 0, 0, 0);" href="#">面向未来招生简章</a></td>
+			  </tr>
+			  <tr>
+			  <td colspan=2><a href="#" style="padding-left:10px;background: url('/wp-content/themes/bwo2014/images/a2.gif') no-repeat scroll 0px 9px rgba(0, 0, 0, 0);">报名及联系方式</a></td>
 			  </tr>
 		</table></div>
 		</div>
 		<div id="left3">
-			<div class="left_s4"><h1>学修引导<span>╱GUIDES</span></h1></div>
+			<div class="left_s4"><h1>实修引导<span>╱GUIDES</span></h1></div>
 			<ul>
 			
 <?php
@@ -129,7 +133,7 @@
 <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
     	<div class="mp_content"><h4><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></h4>
 		<span><?php echo date('M.j,Y',get_the_time('U')); ?></span>
-		<p><?php echo mb_substr(get_the_excerpt(),0,40)."..."; ?></p>
+		<p><?php echo mb_substr(get_the_excerpt(),0,54)."..."; ?></p>
 <?php endwhile;  wp_reset_postdata();?>		
 </div></div>
 		<div class="main_pos">
@@ -139,7 +143,7 @@
 		<ul>
 		<?php
     $recentPosts = new WP_Query();
-    $recentPosts->query('cat=417&showposts=5');
+    $recentPosts->query('cat=417&showposts=7');
 ?>
 <?php while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
     	<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>		
@@ -153,7 +157,7 @@
 	
 			
 		<div id="home-right">
-		<div id="right1"><h1>今日教言<span>╱DAILY QUOTE</span></h1>
+		<div id="right1"><h1>索达吉堪布教言<span>╱QUOTE</span></h1>
 		<span class="right_s1">“</span><p><?php $day=idate('d');the_field('day'.$day,'16959'); ?></p><span class="right_s2">”</span></div>
 		<div id="right2">
 		<h1>最新消息<span>╱NEWS</span></h1>
@@ -161,7 +165,7 @@
 <ul>
 <?php
     global $post;
-	$myposts = get_posts('category=-1&numberposts=5');
+	$myposts = get_posts('category=-1&numberposts=6');
 	foreach($myposts as $post) :
 ?>
 

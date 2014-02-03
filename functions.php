@@ -233,7 +233,7 @@ add_action('thematic_header', 'display_my_image', 2);
 
 add_action('thematic_header','header_right_top');
 	function header_right_top(){ ?>
-	 <div id="circle"></div><div id="tri"></div>
+	 
 	 <div id="header_right_top">
 		<?php include "./wp-content/themes/bwo2014/includes/tcalr.php";?>
 		<div id="search" style="margin-top:14px;">

@@ -274,8 +274,8 @@ a:hover {
 	float:right;
 }
 #right2{
-	height: 417px;
-	background: #7e1222 url(images/right2_bg.png) no-repeat 18px 350px;
+	height: 457px;
+	background: #7e1222 url(images/right2_bg.png) no-repeat 18px 386px;
 	padding: 14px 12px 0px 12px;
 	color:#ffffff;
 }
@@ -408,6 +408,7 @@ a:hover {
 	float: left;	
 	border-bottom: 1px dotted #cccccc;
 	margin-top:5px; 
+	height: 223px;
 }
 
 .main_pos h1,.mp_content h4{
@@ -478,7 +479,7 @@ a:hover {
 	padding:90px 23px 20px 23px; 
 }
 #left2{
-	height:212px;
+	height: 251px;
 	background: #B54315;
 	margin-bottom:10px; 
 	padding-top:20px;
@@ -1027,4 +1028,7 @@ ul.books_nav{
     border: 1px solid #CBCBCB;
     height: 20px;
     width: 200px;
+}
+.left_2_1{
+	padding-left:10px;background: url('/wp-content/themes/bwo2014/images/a2.gif') no-repeat scroll 0px 9px rgba(0, 0, 0, 0);
 }

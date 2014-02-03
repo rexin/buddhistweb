@@ -165,8 +165,9 @@ add_action('thematic_child_init', 'childtheme_setup');
 	<script type="text/javascript">
              var j = $.noConflict(true);
 	</script>
-	<script language="javascript" src="/js/topbtn.js"></script>
-	<?php
+	
+	<?php 
+	
 }
 
 
@@ -246,9 +247,7 @@ add_action('thematic_header','header_right_top',1);
 		</form>
 		</div>		
 	</div>
-	<div id="circle"></div> 
-	<div id="tri_1" class="tri tri_up" onMouseover="disp(1)"></div>
-	<div id="tri_2" class="tri tri_down" onMouseover="disp(2)"></div>
+	
 	<?php }
 	
 	

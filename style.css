@@ -1020,6 +1020,8 @@ ul.books_nav{
     height: 20px;
     width: 200px;
 }
-.tri {width: 0;height: 0;line-height: 0;font-size: 0;border-width: 8px;border-style: solid;width: 0;position: absolute;}
+.tri {width: 0;height: 0;line-height: 0;font-size: 0;border-width: 8px;border-style: solid;width: 0;position: absolute;display:none;}
 .tri_up{border-color: transparent transparent #323232 transparent;z-index: 999;top: 64px;left: 504px;}
-.tri_down{border-color: #323232 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);z-index: 999;top: 10px;left: 504px;display:none;}
+.tri_down{border-color: #323232 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);z-index: 999;top: 10px;left: 504px;}
+#circle {display:none;}
+

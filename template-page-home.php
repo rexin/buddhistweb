@@ -42,7 +42,7 @@
 		</table></div>
 		</div>
 		<div id="left3">
-			<div class="left_s4"><h1>学修引导<span>╱GUIDES</span></h1></div>
+			<div class="left_s4"><h1>实修引导<span>╱GUIDES</span></h1></div>
 			<ul>
 			
 <?php

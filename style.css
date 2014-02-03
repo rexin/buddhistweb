@@ -700,7 +700,7 @@ a:hover {
 	height: 25px;
 	color:#ffffff;	
 	margin-bottom:30px;
-	padding-left:15px; 	
+	padding: 3px 15px;	
 }
 .breadcrumbs1{
 	margin: 0 210px;

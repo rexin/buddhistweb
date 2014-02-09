@@ -42,6 +42,7 @@
 			  </tr>
 			  <tr>
 			  <td colspan=2><a href="http://www.buddhistweb.org/2012/12/6275" class="left_2_1">报名及联系方式</a></td>
+
 			  </tr>
 		</table></div>
 		</div>
@@ -62,23 +63,22 @@
 		<div class='line4'><div class='line5'></div></div>
 		</div>
 		<?php
-		$slide_cat = array('66','231','354','386');		
-		foreach ($slide_cat as $scat){
-		$recentPosts = new WP_Query();
-		$args = "cat=".$scat."&showposts=1";
-		$recentPosts->query($args);		
-		while ($recentPosts->have_posts()) : $recentPosts->the_post(); 
-    	$category = get_the_category(); 
+		$posts = get_posts(array('numberposts'=>'4','meta_query' => array(array('key' => 'recommend','value' => '1','compare' => '=='))));
+ 		if( $posts ){
+		foreach( $posts as $post )
+		{
+		setup_postdata( $post );
+		$category = get_the_category(); 
 		$t1 = $category[0]->cat_name;
 		$t5 = get_the_title();
 		$t2 = mb_strimwidth($t5, 0, 24);
 		$t3 = date('F j,Y',get_the_time('U'));
 		$t4 = get_permalink();
-		endwhile;  wp_reset_postdata();
-		$piclink[] = $t4; 
-		$slide[] = sprintf('<h1>%s</h1><h2><a href="%s" title="%s" alt="">%s</a></h2><p>%s</p>',$t1,$t4,$t5,$t2,$t3);		
-		}
-		
+	 	$piclink[] = $t4; 
+		$slide[] = sprintf('<h1>%s</h1><h2><a href="%s" title="%s" alt="">%s</a></h2><p>%s</p>',$t1,$t4,$t5,$t2,$t3);
+		}	 
+		wp_reset_postdata();
+		}	
 		
 		?>		
 	

@@ -281,7 +281,7 @@ function sidebar_left() { ?>
 			while ($recentPosts->have_posts()) : $recentPosts->the_post(); ?>
 				<li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
 			<?php endwhile;  wp_reset_postdata();
-			}elseif(is_month()||is_search()){
+			}elseif(is_month()||is_search()||is_404()){
 			wp_get_archives("type=monthly&format=html&show_post_count=true&limit=12"); 
 			}elseif($root_id=="386"){
 			wp_list_categories("child_of=$root_id&exclude=416&title_li=&hide_empty=1&depth=2");
@@ -358,7 +358,7 @@ $img_b['386']= get_field('img-right-9b','13110');
 	<div class="right_ps1">		
 		<img class="s_right1" src="<?php print_r($img_a[$root_id]);?>"> 
 		<?php 
-		if ($root_id =='383'||is_month()||is_search()){
+		if ($root_id =='383'||is_month()||is_search()||is_404()){
 		the_field('right_txt_1a','13121');		
 		}else{?>
 		<h2>最新更新╱<span>UPDATE</span></h2>

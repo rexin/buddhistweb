@@ -165,9 +165,7 @@ add_action('thematic_child_init', 'childtheme_setup');
 	<script type="text/javascript">
              var j = $.noConflict(true);
 	</script>
-	
-	<?php 
-	
+	<?php
 }
 
 
@@ -233,7 +231,7 @@ add_action('thematic_header', 'display_my_image', 2);
 //baidu
 /* <div id="search" style="margin-top:14px;"><form action="http://www.baidu.com/s" name="f1" onsubmit="return doSearch(this);" target="_blank"><input type="hidden" name="tn" value="baidulocal" /> <input type="hidden" name="si" value="www.buddhistweb.org" /> <input type="hidden" name="ct" value="2097152" /> <input style="border: 1px solid #cbcbcb; background: url('<?php echo get_stylesheet_directory_uri().'/images/s.gif'; ?>') no-repeat right; padding:3px 5px 5px 8px; color: #3a3a3c;font-size:12px" type="text" name="word" value="" size="40" /></form></div> */
 
-add_action('thematic_header','header_right_top',1);
+add_action('thematic_header','header_right_top');
 	function header_right_top(){ ?>
 	 
 	 <div id="header_right_top">
@@ -246,8 +244,7 @@ add_action('thematic_header','header_right_top',1);
 		</div>
 		</form>
 		</div>		
-	</div>
-	
+	</div>	
 	<?php }
 	
 	
